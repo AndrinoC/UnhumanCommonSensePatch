@@ -1,0 +1,122 @@
+{
+  "en": {
+    "Equip": "Equip",
+    "Unequip": "Unequip",
+    "Skip Intro Splash": "Skip Intro Splash",
+    "SKIP TUTORIAL (CLAIM ALL REWARDS)": "SKIP TUTORIAL (CLAIM ALL REWARDS)",
+    "TUTORIAL SKIPPED": "TUTORIAL SKIPPED",
+    "All tutorial & mentor rewards granted! Welcome, Operator.": "All tutorial & mentor rewards granted! Welcome, Operator.",
+    "Minigame Idle Mode": "Minigame Idle Mode",
+    "Auto-complete lockpick/hacking (10s wait, no penalty)": "Auto-complete lockpick/hacking (10s wait, no penalty)"
+  },
+  "de": {
+    "Equip": "Anlegen",
+    "Unequip": "Ablegen",
+    "Skip Intro Splash": "Intro-Splash überspringen",
+    "SKIP TUTORIAL (CLAIM ALL REWARDS)": "TUTORIAL ÜBERSPRINGEN (ALLE BELOHNUNGEN EINFORDERN)",
+    "TUTORIAL SKIPPED": "TUTORIAL ÜBERSPRUNGEN",
+    "All tutorial & mentor rewards granted! Welcome, Operator.": "Alle Tutorial- und Mentor-Belohnungen erhalten! Willkommen, Operator.",
+    "Minigame Idle Mode": "Minispiel-Idle-Modus",
+    "Auto-complete lockpick/hacking (10s wait, no penalty)": "Schlossknacken/Hacking automatisch abschließen (10s Wartezeit, keine Strafe)"
+  },
+  "es": {
+    "Equip": "Equipar",
+    "Unequip": "Desequipar",
+    "Skip Intro Splash": "Omitir pantalla de inicio",
+    "SKIP TUTORIAL (CLAIM ALL REWARDS)": "SALTAR TUTORIAL (RECLAMAR TODAS LAS RECOMPENSAS)",
+    "TUTORIAL SKIPPED": "TUTORIAL OMITIDO",
+    "All tutorial & mentor rewards granted! Welcome, Operator.": "¡Todas las recompensas de tutorial y mentor otorgadas! Bienvenido, Operador.",
+    "Minigame Idle Mode": "Modo Inactivo de Minijuegos",
+    "Auto-complete lockpick/hacking (10s wait, no penalty)": "Autocompletar ganzúa/hackeo (10s espera, sin penalización)"
+  },
+  "fr": {
+    "Equip": "Équiper",
+    "Unequip": "Déséquiper",
+    "Skip Intro Splash": "Passer l'écran d'accueil",
+    "SKIP TUTORIAL (CLAIM ALL REWARDS)": "PASSER LE TUTORIEL (RÉCUPÉRER TOUTES LES RÉCOMPENSES)",
+    "TUTORIAL SKIPPED": "TUTORIEL PASSÉ",
+    "All tutorial & mentor rewards granted! Welcome, Operator.": "Toutes les récompenses de tutoriel et de mentor accordées ! Bienvenue, Opérateur.",
+    "Minigame Idle Mode": "Mode Idle Mini-jeux",
+    "Auto-complete lockpick/hacking (10s wait, no penalty)": "Crochetage/Piratage auto (10s attente, sans pénalité)"
+  },
+  "ja": {
+    "Equip": "装備",
+    "Unequip": "装備解除",
+    "Skip Intro Splash": "イントロをスキップ",
+    "SKIP TUTORIAL (CLAIM ALL REWARDS)": "チュートリアルをスキップ（全報酬を獲得）",
+    "TUTORIAL SKIPPED": "チュートリアルをスキップしました",
+    "All tutorial & mentor rewards granted! Welcome, Operator.": "すべてのチュートリアル＆メンター報酬を獲得しました！ようこそ、オペレーター。",
+    "Minigame Idle Mode": "ミニゲーム放置モード",
+    "Auto-complete lockpick/hacking (10s wait, no penalty)": "ピッキング/ハッキングの自動完了（10秒待機、ペナルティなし）"
+  },
+  "ko": {
+    "Equip": "장착",
+    "Unequip": "장착 해제",
+    "Skip Intro Splash": "인트로 스킵",
+    "SKIP TUTORIAL (CLAIM ALL REWARDS)": "튜토리얼 건너뛰기 (모든 보상 받기)",
+    "TUTORIAL SKIPPED": "튜토리얼 건너뜀",
+    "All tutorial & mentor rewards granted! Welcome, Operator.": "모든 튜토리얼 및 멘토 보상이 지급되었습니다! 환영합니다, 오퍼레이터.",
+    "Minigame Idle Mode": "미니게임 방치 모드",
+    "Auto-complete lockpick/hacking (10s wait, no penalty)": "락픽/해킹 자동 완료 (10초 대기, 페널티 없음)"
+  },
+  "pl": {
+    "Equip": "Załóż",
+    "Unequip": "Zdejmij",
+    "Skip Intro Splash": "Pomiń intro",
+    "SKIP TUTORIAL (CLAIM ALL REWARDS)": "POMIŃ SAMOUCZEK (ODBIERZ WSZYSTKIE NAGRODY)",
+    "TUTORIAL SKIPPED": "SAMOUCZEK POMINIĘTY",
+    "All tutorial & mentor rewards granted! Welcome, Operator.": "Wszystkie nagrody za samouczek i mentora przyznane! Witaj, Operatorze.",
+    "Minigame Idle Mode": "Tryb bezczynności minigier",
+    "Auto-complete lockpick/hacking (10s wait, no penalty)": "Autoukończenie wytrychu/hakowania (10s oczekiwania, brak kary)"
+  },
+  "pt": {
+    "Equip": "Equipar",
+    "Unequip": "Desequipar",
+    "Skip Intro Splash": "Pular tela de introdução",
+    "SKIP TUTORIAL (CLAIM ALL REWARDS)": "PULAR TUTORIAL (RESGATAR TODAS AS RECOMPENSAS)",
+    "TUTORIAL SKIPPED": "TUTORIAL PULADO",
+    "All tutorial & mentor rewards granted! Welcome, Operator.": "Todas as recompensas do tutorial e mentor foram concedidas! Bem-vindo, Operador.",
+    "Minigame Idle Mode": "Modo Ocioso de Minijogos",
+    "Auto-complete lockpick/hacking (10s wait, no penalty)": "Autoconcluir lockpick/hacking (10s de espera, sem penalidade)"
+  },
+  "ru": {
+    "Equip": "Экипировать",
+    "Unequip": "Снять",
+    "Skip Intro Splash": "Пропускать заставку",
+    "SKIP TUTORIAL (CLAIM ALL REWARDS)": "ПРОПУСТИТЬ ОБУЧЕНИЕ (ЗАБРАТЬ ВСЕ НАГРАДЫ)",
+    "TUTORIAL SKIPPED": "ОБУЧЕНИЕ ПРОПУЩЕНО",
+    "All tutorial & mentor rewards granted! Welcome, Operator.": "Все награды за обучение и наставника получены! Добро пожаловать, Оператор.",
+    "Minigame Idle Mode": "Режим авто-мини-игр",
+    "Auto-complete lockpick/hacking (10s wait, no penalty)": "Авто-взлом замков/терминалов (10 сек. ожидания, без штрафа)"
+  },
+  "tr": {
+    "Equip": "Kuşan",
+    "Unequip": "Çıkar",
+    "Skip Intro Splash": "Başlangıç Ekranını Atla",
+    "SKIP TUTORIAL (CLAIM ALL REWARDS)": "EĞİTİMİ ATLA (TÜM ÖDÜLLERİ AL)",
+    "TUTORIAL SKIPPED": "EĞİTİM ATLANDI",
+    "All tutorial & mentor rewards granted! Welcome, Operator.": "Tüm eğitim ve rehber ödülleri verildi! Hoş geldin, Operatör.",
+    "Minigame Idle Mode": "Mini Oyun Boşta Modu",
+    "Auto-complete lockpick/hacking (10s wait, no penalty)": "Maymuncuk/hacklemeyi otomatik tamamla (10 sn bekleme, ceza yok)"
+  },
+  "zh": {
+    "Equip": "装备",
+    "Unequip": "卸下",
+    "Skip Intro Splash": "跳过启动画面",
+    "SKIP TUTORIAL (CLAIM ALL REWARDS)": "跳过教程（领取所有奖励）",
+    "TUTORIAL SKIPPED": "教程已跳过",
+    "All tutorial & mentor rewards granted! Welcome, Operator.": "已发放所有教程和导师奖励！欢迎，操作员。",
+    "Minigame Idle Mode": "小游戏放置模式",
+    "Auto-complete lockpick/hacking (10s wait, no penalty)": "自动完成撬锁/黑客（等待10秒，无惩罚）"
+  },
+  "zhtw": {
+    "Equip": "裝備",
+    "Unequip": "卸下",
+    "Skip Intro Splash": "跳過啟動畫面",
+    "SKIP TUTORIAL (CLAIM ALL REWARDS)": "跳過教程（領取所有獎勵）",
+    "TUTORIAL SKIPPED": "教程已跳過",
+    "All tutorial & mentor rewards granted! Welcome, Operator.": "已發放所有教程和導師獎勵！歡迎，操作員。",
+    "Minigame Idle Mode": "小遊戲放置模式",
+    "Auto-complete lockpick/hacking (10s wait, no penalty)": "自動完成撬鎖/黑客（等待10秒，無懲罰）"
+  }
+}

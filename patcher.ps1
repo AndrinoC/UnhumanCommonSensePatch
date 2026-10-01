@@ -1,16 +1,40 @@
 # UNHUMAN Mod Patcher (PowerShell Engine)
+# Supports multi-language game installations (12 languages)
 param(
     [string]$Action = "patch"
 )
+
+[Console]::OutputEncoding = [System.Text.Encoding]::UTF8
 
 $Action = $Action.ToLower().TrimStart("-")
 $BaseDir = $PSScriptRoot
 if (-not $BaseDir) { $BaseDir = (Get-Location).Path }
 
-$HtmlPath = Join-Path $BaseDir "package.nw\unhuman.html"
-$BackupPath = Join-Path $BaseDir "package.nw\unhuman.html.bak"
+$GameDir = if (Test-Path (Join-Path $BaseDir "package.nw")) {
+    $BaseDir
+} elseif (Test-Path (Join-Path $BaseDir "..\package.nw")) {
+    (Resolve-Path (Join-Path $BaseDir "..")).Path
+} else {
+    $BaseDir
+}
+
+$NwDir = Join-Path $GameDir "package.nw"
+$HtmlPath = Join-Path $NwDir "unhuman.html"
+$BackupPath = Join-Path $NwDir "unhuman.html.bak"
+$LangDir = Join-Path $NwDir "lang"
+$TranslationsPath = Join-Path $BaseDir "translations.json"
 
 $Utf8NoBom = New-Object System.Text.UTF8Encoding($false)
+$LangCodes = @("de", "es", "fr", "ja", "ko", "pl", "pt", "ru", "tr", "zh", "zhtw")
+
+function Load-Translations {
+    if (-not (Test-Path $TranslationsPath)) {
+        Write-Host "[ERROR] translations.json not found at: $TranslationsPath" -ForegroundColor Red
+        exit 1
+    }
+    $raw = [System.IO.File]::ReadAllText($TranslationsPath, [System.Text.Encoding]::UTF8)
+    return ($raw | ConvertFrom-Json)
+}
 
 function Test-IsModded($content) {
     return ($content.Contains("skipTutorialToggle") -and
@@ -20,9 +44,9 @@ function Test-IsModded($content) {
 }
 
 function Show-Status {
-    Write-Host "------------------------------------------------------------" -ForegroundColor Cyan
+    Write-Host "============================================================" -ForegroundColor Cyan
     Write-Host "                    UNHUMAN MOD STATUS                      " -ForegroundColor Cyan
-    Write-Host "------------------------------------------------------------" -ForegroundColor Cyan
+    Write-Host "============================================================" -ForegroundColor Cyan
     Write-Host "Target File  : $HtmlPath"
     if (Test-Path $HtmlPath) {
         $content = [System.IO.File]::ReadAllText($HtmlPath, $Utf8NoBom)
@@ -42,16 +66,101 @@ function Show-Status {
             Write-Host "Backup Exists: " -NoNewline
             Write-Host "NO" -ForegroundColor Yellow
         }
+
+        # Check language files
+        $locCount = 0
+        $langBakCount = 0
+        if (Test-Path $LangDir) {
+            foreach ($code in $LangCodes) {
+                $lf = Join-Path $LangDir "$code.js"
+                $lb = Join-Path $LangDir "$code.js.bak"
+                if (Test-Path $lf) {
+                    $c = [System.IO.File]::ReadAllText($lf, $Utf8NoBom)
+                    if ($c.Contains("// UNHUMAN MOD LOCALIZATION")) {
+                        $locCount++
+                    }
+                }
+                if (Test-Path $lb) {
+                    $langBakCount++
+                }
+            }
+        }
+        Write-Host "Localization : $locCount / $($LangCodes.Count) language files localized" -ForegroundColor Cyan
+        if ($langBakCount -gt 0) {
+            Write-Host "Lang Backups : YES ($langBakCount files in package.nw\lang)" -ForegroundColor Green
+        } else {
+            Write-Host "Lang Backups : NO" -ForegroundColor Yellow
+        }
     } else {
         Write-Host "Target File  : NOT FOUND!" -ForegroundColor Red
     }
-    Write-Host "------------------------------------------------------------" -ForegroundColor Cyan
+    Write-Host "============================================================" -ForegroundColor Cyan
+}
+
+function Patch-LanguageFiles($translations) {
+    if (-not (Test-Path $LangDir)) {
+        Write-Host "[WARN] Language directory not found at: $LangDir" -ForegroundColor Yellow
+        return
+    }
+
+    Write-Host "[I18N] Patching language dictionary files..." -ForegroundColor Cyan
+    foreach ($lang in $LangCodes) {
+        $langFile = Join-Path $LangDir "$lang.js"
+        $langBak = Join-Path $LangDir "$lang.js.bak"
+        if (-not (Test-Path $langFile)) { continue }
+
+        if (-not (Test-Path $langBak)) {
+            Copy-Item -Path $langFile -Destination $langBak -Force
+        }
+
+        $content = [System.IO.File]::ReadAllText($langFile, [System.Text.Encoding]::UTF8)
+        if ($content.Contains("// UNHUMAN MOD LOCALIZATION")) {
+            Write-Host "  + [ALREADY MODDED] lang/$lang.js" -ForegroundColor Yellow
+            continue
+        }
+
+        $marker = "window.I18N_DICTS.$lang = {"
+        $idx = $content.IndexOf($marker)
+        if ($idx -lt 0) {
+            Write-Host "  - [WARN] Could not find dictionary header in lang/$lang.js" -ForegroundColor Yellow
+            continue
+        }
+
+        $langObj = $translations.$lang
+        if (-not $langObj) { continue }
+
+        $entries = @()
+        foreach ($prop in $langObj.psobject.properties) {
+            $k = $prop.Name.Replace("\", "\\").Replace('"', '\"')
+            $v = ([string]$prop.Value).Replace("\", "\\").Replace('"', '\"')
+            $entries += "    `"$k`": `"$v`","
+        }
+        $entriesText = $entries -join "`n"
+        $repl = "$marker`n    // UNHUMAN MOD LOCALIZATION`n$entriesText"
+
+        $newContent = $content.Substring(0, $idx) + $repl + $content.Substring($idx + $marker.Length)
+        [System.IO.File]::WriteAllText($langFile, $newContent, $Utf8NoBom)
+        Write-Host "  + [OK] Localized lang/$lang.js ($($entries.Count) strings)" -ForegroundColor Green
+    }
+}
+
+function Restore-LanguageFiles {
+    if (-not (Test-Path $LangDir)) { return }
+    Write-Host "[RESTORE] Restoring language files from backups..." -ForegroundColor Cyan
+    foreach ($lang in $LangCodes) {
+        $langFile = Join-Path $LangDir "$lang.js"
+        $langBak = Join-Path $LangDir "$lang.js.bak"
+        if (Test-Path $langBak) {
+            Copy-Item -Path $langBak -Destination $langFile -Force
+            Write-Host "  + Restored lang/$lang.js" -ForegroundColor Green
+        }
+    }
 }
 
 function Restore-Backup {
-    Write-Host "------------------------------------------------------------" -ForegroundColor Cyan
+    Write-Host "============================================================" -ForegroundColor Cyan
     Write-Host "            UNHUMAN MOD PATCHER: RESTORING BACKUP           " -ForegroundColor Cyan
-    Write-Host "------------------------------------------------------------" -ForegroundColor Cyan
+    Write-Host "============================================================" -ForegroundColor Cyan
 
     if (-not (Test-Path $BackupPath)) {
         Write-Host "[ERROR] No backup found at: $BackupPath" -ForegroundColor Red
@@ -59,23 +168,28 @@ function Restore-Backup {
     }
 
     Copy-Item -Path $BackupPath -Destination $HtmlPath -Force
+    Restore-LanguageFiles
+
     $content = [System.IO.File]::ReadAllText($HtmlPath, $Utf8NoBom)
     if (-not (Test-IsModded($content))) {
-        Write-Host "[SUCCESS] Original game file restored successfully!" -ForegroundColor Green
+        Write-Host "[SUCCESS] Original game files restored successfully!" -ForegroundColor Green
     } else {
         Write-Host "[WARNING] Restored file still appears to have mod markers." -ForegroundColor Yellow
     }
 }
 
 function Apply-Patch {
-    Write-Host "------------------------------------------------------------" -ForegroundColor Cyan
+    Write-Host "============================================================" -ForegroundColor Cyan
     Write-Host "              UNHUMAN MOD PATCHER: APPLYING MOD            " -ForegroundColor Cyan
-    Write-Host "------------------------------------------------------------" -ForegroundColor Cyan
+    Write-Host "============================================================" -ForegroundColor Cyan
 
     if (-not (Test-Path $HtmlPath)) {
         Write-Host "[ERROR] Target file does not exist: $HtmlPath" -ForegroundColor Red
         return
     }
+
+    $translations = Load-Translations
+    $minJson = ($translations | ConvertTo-Json -Compress)
 
     $content = [System.IO.File]::ReadAllText($HtmlPath, $Utf8NoBom)
 
@@ -85,7 +199,7 @@ function Apply-Patch {
             $content = [System.IO.File]::ReadAllText($BackupPath, $Utf8NoBom)
         } else {
             Write-Host "[INFO] The mod is ALREADY APPLIED to unhuman.html." -ForegroundColor Green
-            Write-Host "[INFO] No changes needed."
+            Patch-LanguageFiles $translations
             return
         }
     }
@@ -101,6 +215,18 @@ function Apply-Patch {
     # Define replacement steps
     $Patches = @(
         @{
+            Name = '0a. Mod I18N Dictionaries Injection'
+            Target = 'window.I18N_DICTS=window.I18N_DICTS||{};const I18N={lang:"en",dict:null,'
+            Replacement = "window.I18N_DICTS=window.I18N_DICTS||{};window.UH_MOD_I18N=$minJson;const I18N={lang:`"en`",dict:null,"
+            ExpectedCount = 1
+        },
+        @{
+            Name = '0b. Mod I18N ready() Dictionary Merge Hook'
+            Target = 'ready(){if(this.dict=I18N_DICTS[this.lang]||null,this.dict){'
+            Replacement = 'ready(){if(window.UH_MOD_I18N&&window.I18N_DICTS&&this.lang&&window.UH_MOD_I18N[this.lang]){window.I18N_DICTS[this.lang]=window.I18N_DICTS[this.lang]||{};Object.assign(window.I18N_DICTS[this.lang],window.UH_MOD_I18N[this.lang])}if(this.dict=I18N_DICTS[this.lang]||null,this.dict){if(window.UH_MOD_I18N&&this.lang&&window.UH_MOD_I18N[this.lang]){Object.assign(this.dict,window.UH_MOD_I18N[this.lang])}'
+            ExpectedCount = 1
+        },
+        @{
             Name = '1a. HTML Toggle in Character Creation Screen'
             Target = '<div onclick="Game.selectAvatar(4)" class="avatar-option w-16 h-16 cursor-pointer" data-id="4" style="border:1px solid rgba(0,255,65,0.3);background:rgba(0,5,0,0.6);"><img src="assets/avatars/avatar_4.png" style="width:100%;height:100%;object-fit:cover;image-rendering:pixelated;pointer-events:none;" draggable="false"></div>
                 </div>
@@ -111,7 +237,7 @@ function Apply-Patch {
             </div>
             <div class="mb-6 flex items-center justify-center gap-3">
                 <input type="checkbox" id="skipTutorialToggle" class="accent-emerald-500 w-4 h-4 cursor-pointer" checked>
-                <label for="skipTutorialToggle" class="text-xs text-green-400 cursor-pointer select-none font-mono" style="letter-spacing: 1px;">
+                <label for="skipTutorialToggle" class="text-xs text-green-400 cursor-pointer select-none font-mono text-center" style="letter-spacing: 1px;">
                     SKIP TUTORIAL (CLAIM ALL REWARDS)
                 </label>
             </div>
@@ -121,7 +247,7 @@ function Apply-Patch {
         @{
             Name = '1b. finalizeCharacter Hook & skipTutorialAndGrantRewards'
             Target = 'void 0!==TutorialManager&&setTimeout(()=>TutorialManager.showPrompt(),500)},healClockDrift()'
-            Replacement = 'document.getElementById("skipTutorialToggle")?.checked?this.skipTutorialAndGrantRewards():(void 0!==TutorialManager&&setTimeout(()=>TutorialManager.showPrompt(),500))},skipTutorialAndGrantRewards(){this.data.tutorial={active:!1,stepIndex:0,completed:!0,raidCount:0};try{localStorage.setItem("unhuman_tutorial_ever_completed","true")}catch(e){}if(void 0!==TutorialManager){TutorialManager.active=!1;TutorialManager._removeGlobalBlocker&&TutorialManager._removeGlobalBlocker();TutorialManager.hideSpotlight&&TutorialManager.hideSpotlight()}this.data.mentor={enabled:!1,offerVet:!1,idx:void 0!==MENTOR_TASKS?MENTOR_TASKS.length:18,done:{},skipped:{},snap:null};if(void 0!==MentorSystem){MentorSystem.disable&&MentorSystem.disable();MentorSystem._hide&&MentorSystem._hide()}if(void 0!==MENTOR_TASKS&&Array.isArray(MENTOR_TASKS)){MENTOR_TASKS.forEach(e=>{try{e.onStart&&e.onStart()}catch(e){}try{e.grant&&e.grant()}catch(e){}this.data.mentor&&this.data.mentor.done&&(this.data.mentor.done[e.id]=!0)})}try{this.data.traderQuests||(this.data.traderQuests={});this.data.traderQuests.gs_welcome={status:"completed",progress:{}};"function"==typeof addStandingXP&&addStandingXP("gunsmith",25);if(void 0!==ItemFactory){const e=["ar_t3","smg_t3","shotgun_t3","dmr_t3"],t=e[Math.floor(Math.random()*e.length)],a=ItemFactory.create(t,"standard",1);a&&(a._tutorialWeapon=!0,this.addToStash(a)||this.recoverToGunsmith(a))}}catch(e){}if((this.data.level||1)<5){const e=5-(this.data.level||1);this.data.level=5,this.data.xp=0;this.data.skillTree||(this.data.skillTree={allocatedNodes:[],availablePoints:0,totalPointsSpent:0});this.data.skillTree.availablePoints=(this.data.skillTree.availablePoints||0)+e}try{this.addCurrency&&this.addCurrency("tech_chip_root",10);this.addCurrency&&this.addCurrency("tech_drive_flash",10);this.addCurrency&&this.addCurrency("tech_chip_kernel",10)}catch(e){}this.saveData();void 0!==GlobalNotif&&GlobalNotif.showCentered("TUTORIAL SKIPPED","All tutorial & mentor rewards granted! Welcome, Operator.")},healClockDrift()'
+            Replacement = 'document.getElementById("skipTutorialToggle")?.checked?this.skipTutorialAndGrantRewards():(void 0!==TutorialManager&&setTimeout(()=>TutorialManager.showPrompt(),500))},skipTutorialAndGrantRewards(){this.data.tutorial={active:!1,stepIndex:0,completed:!0,raidCount:0};try{localStorage.setItem("unhuman_tutorial_ever_completed","true")}catch(e){}if(void 0!==TutorialManager){TutorialManager.active=!1;TutorialManager._removeGlobalBlocker&&TutorialManager._removeGlobalBlocker();TutorialManager.hideSpotlight&&TutorialManager.hideSpotlight()}this.data.mentor={enabled:!1,offerVet:!1,idx:void 0!==MENTOR_TASKS?MENTOR_TASKS.length:18,done:{},skipped:{},snap:null};if(void 0!==MentorSystem){MentorSystem.disable&&MentorSystem.disable();MentorSystem._hide&&MentorSystem._hide()}if(void 0!==MENTOR_TASKS&&Array.isArray(MENTOR_TASKS)){MENTOR_TASKS.forEach(e=>{try{e.onStart&&e.onStart()}catch(e){}try{e.grant&&e.grant()}catch(e){}this.data.mentor&&this.data.mentor.done&&(this.data.mentor.done[e.id]=!0)})}try{this.data.traderQuests||(this.data.traderQuests={});this.data.traderQuests.gs_welcome={status:"completed",progress:{}};"function"==typeof addStandingXP&&addStandingXP("gunsmith",25);if(void 0!==ItemFactory){const e=["ar_t3","smg_t3","shotgun_t3","dmr_t3"],t=e[Math.floor(Math.random()*e.length)],a=ItemFactory.create(t,"standard",1);a&&(a._tutorialWeapon=!0,this.addToStash(a)||this.recoverToGunsmith(a))}}catch(e){}if((this.data.level||1)<5){const e=5-(this.data.level||1);this.data.level=5,this.data.xp=0;this.data.skillTree||(this.data.skillTree={allocatedNodes:[],availablePoints:0,totalPointsSpent:0});this.data.skillTree.availablePoints=(this.data.skillTree.availablePoints||0)+e}try{this.addCurrency&&this.addCurrency("tech_chip_root",10);this.addCurrency&&this.addCurrency("tech_drive_flash",10);this.addCurrency&&this.addCurrency("tech_chip_kernel",10)}catch(e){}this.saveData();void 0!==GlobalNotif&&GlobalNotif.showCentered("function"==typeof T?T("TUTORIAL SKIPPED"):"TUTORIAL SKIPPED","function"==typeof T?T("All tutorial & mentor rewards granted! Welcome, Operator."):"All tutorial & mentor rewards granted! Welcome, Operator.")},healClockDrift()'
             ExpectedCount = 1
         },
         @{
@@ -159,12 +285,14 @@ function Apply-Patch {
             Target = '{id:"minigameIdleMode",label:"Minigame Idle Mode",desc:"Auto-complete lockpick/hacking (10s wait, -15% loot)",type:"checkbox"}'
             Replacement = '{id:"minigameIdleMode",label:"Minigame Idle Mode",desc:"Auto-complete lockpick/hacking (10s wait, no penalty)",type:"checkbox"}'
             ExpectedCount = 1
+            Optional = $true
         },
         @{
             Name = '3b. completeIdleMinigame penalty'
             Target = 'this.startLootingWithBonus(e,{rarity:-.15,quantity:-.15})'
             Replacement = 'this.startLootingWithBonus(e,{rarity:.1,quantity:.1})'
             ExpectedCount = 1
+            Optional = $true
         },
         @{
             Name = 'Context Menu Equip/Unequip HTML'
@@ -196,11 +324,15 @@ function Apply-Patch {
         }
     )
 
-    Write-Host "[PATCH] Applying modifications..."
+    Write-Host "[PATCH] Applying code modifications..." -ForegroundColor Cyan
     foreach ($p in $Patches) {
         $parts = $content.Split(@($p.Target), [System.StringSplitOptions]::None)
         $count = $parts.Length - 1
         if ($count -ne $p.ExpectedCount) {
+            if ($p.Optional) {
+                Write-Host "  * [SKIPPED] $($p.Name) (not present in this game version - already updated)" -ForegroundColor Yellow
+                continue
+            }
             Write-Host "[ERROR] Patch '$($p.Name)' expected $($p.ExpectedCount) match(es), but found $count." -ForegroundColor Red
             Write-Host "[ABORT] File content may differ from expected version. Aborting without saving." -ForegroundColor Red
             return
@@ -209,21 +341,26 @@ function Apply-Patch {
         Write-Host "  + [OK] $($p.Name)" -ForegroundColor Green
     }
 
-    Write-Host "[SAVE] Writing updated unhuman.html..."
+    Write-Host "[SAVE] Writing updated unhuman.html..." -ForegroundColor Cyan
     [System.IO.File]::WriteAllText($HtmlPath, $content, $Utf8NoBom)
+
+    # Patch language files
+    Patch-LanguageFiles $translations
 
     $verifyContent = [System.IO.File]::ReadAllText($HtmlPath, $Utf8NoBom)
     if (Test-IsModded($verifyContent)) {
-        Write-Host "------------------------------------------------------------" -ForegroundColor Cyan
+        Write-Host "============================================================" -ForegroundColor Cyan
         Write-Host "                 MOD APPLIED SUCCESSFULLY!                  " -ForegroundColor Green
-        Write-Host "------------------------------------------------------------" -ForegroundColor Cyan
-        Write-Host "Fixes included:"
+        Write-Host "============================================================" -ForegroundColor Cyan
+        Write-Host "Features & Quality-of-Life Improvements:" -ForegroundColor White
         Write-Host "  1. Character Creation Tutorial Skip toggle + Instant Rewards" -ForegroundColor White
         Write-Host "  2. Intro Splash Skip toggle in Settings (ON by default) + Click/Key Skip" -ForegroundColor White
-        Write-Host "  3. Removed -15% Loot Penalty for Auto-Complete Minigames in Raid Filters" -ForegroundColor White
-        Write-Host "  4. Double Click to equip / unequip items" -ForegroundColor White
+        Write-Host "  3. Removed Minigame Auto-Complete penalty (if applicable)" -ForegroundColor White
+        Write-Host "  4. Double Click to equip / unequip items (stash, loadout, augments)" -ForegroundColor White
         Write-Host "  5. Right-click context menu Equip / Unequip options" -ForegroundColor White
-        Write-Host "------------------------------------------------------------" -ForegroundColor Cyan
+        Write-Host "  6. Multi-Language Support (12 Languages):" -ForegroundColor White
+        Write-Host "     EN, DE, ES, FR, JA, KO, PL, PT, RU, TR, ZH, ZHTW" -ForegroundColor White
+        Write-Host "============================================================" -ForegroundColor Cyan
     } else {
         Write-Host "[ERROR] Verification failed after writing file!" -ForegroundColor Red
     }

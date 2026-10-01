@@ -39,6 +39,9 @@ echo   [5] Right-Click Context Menu Equip / Unequip
 echo       - Adds "Equip" option when right-clicking stash items
 echo       - Adds "Unequip" option when right-clicking loadout items
 echo.
+echo   [6] Full Multi-Language Support (12 Languages)
+echo       - Localized in EN, DE, ES, FR, JA, KO, PL, PT, RU, TR, ZH, ZHTW
+echo.
 echo ============================================================
 echo   SELECT AN OPTION:
 echo ============================================================
