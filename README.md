@@ -81,6 +81,24 @@ All mod-added elements (toggles, notifications, menu options, modal dialogs, and
 - Seamlessly clears the asterisk once all points are spent.
 - Works across all navigation views (Top Bar, Hub Terminal, NavDock) and is fully compatible with all 12 supported languages.
 
+### 12. Mythic Weapon Upgrades (+1 to +10 Checkpoint & Zero Deletion)
+- **Zero Weapon Deletion**: Permanently disables weapon destruction on failed upgrades across all levels (previously, upgrading past +5 had a catastrophic chance to permanently delete your rolled weapon base).
+- **Safety Checkpoint Floor at +5**: Failing an upgrade at +5 or higher only downgrades the weapon by 1 level, but will **never drop below +5**. Once you reach the +5 milestone, your weapon is permanently protected at +5 minimum.
+- **Fairer Endgame Success Progression**: Smoothed success rates for higher tiers (+1 to +3: 100%, +4: 85%, +5: 70%, +6: 55%, +7: 45%, +8: 35%, +9: 25%, +10: 20%). Makes reaching +10 and unlocking the 3rd ability slot achievable with dedication rather than statistical impossibility.
+- **Dynamic UI Updates**: Modal dialogs automatically adjust to show "CONFIRM UPGRADE" with regular theme instead of danger alerts, and warning text updates to reflect level downgrade rather than deletion risk.
+
+### 13. Nullpoint Abyss Fragment Merging (Safe Failure & Fee/Rate Rebalance)
+- **Base Preservation on Failure**: When attempting to merge two Nullpoint Abyss fragments and failing, only the duplicate material fragment is consumed. Your primary base fragment is **100% preserved**, allowing you to continuously build up rare high-stat bases without losing them.
+- **90% Fee Reduction on Infinity Fragments**: Merging Infinity fragments now costs $1B cash per attempt instead of the prohibitive $10B fee.
+- **Standard Fragment & Module Cost Reductions**:
+  - Standard Fragments: reduced from $50M to $10M per attempt.
+  - Abyss Modules: reduced from $1M to $100k per attempt.
+- **Rebalanced Merge Success Odds**:
+  - Standard Stat Fragments: increased from 10% to 30%.
+  - Special Fragments: increased from 5% to 20%.
+  - Infinity Fragments: progression improved from [10, 5, 2, 1, 1]% to [35, 25, 20, 15, 10]%.
+- **Context-Aware Notifications**: Modal preview specifies "Secondary copy consumed (Base preserved)" and failure banners accurately report that your base fragment was preserved.
+
 Uses a dual-layer internationalization architecture:
 1. **Dynamic Runtime Injection**: Injects mod dictionaries into the game's `I18N` engine so translations work dynamically upon booting and switching languages in-game.
 2. **Static Dictionary Patching**: Updates `package.nw\lang\*.js` files with safety `.bak` backups.
