@@ -48,7 +48,7 @@ The patcher modifies the game package directly (`package.nw\unhuman.html` and `p
   - Displays all compatible items for that slot currently stored in your stash.
   - Lists essential item stats (Damage, RPM, Durability, Armor rating, Container grid size, Rarity tier coloring).
   - Clicking any item immediately equips it to that slot.
-  - Features a direct **"🛒 Buy from Trader (TRADER_NAME)"** shortcut button at the top that navigates directly to the designated trader for that gear category:
+  - Features a direct **"Buy from Trader (TRADER_NAME)"** shortcut button at the top that navigates directly to the designated trader for that gear category:
     - Weapons -> **Gunsmith**
     - Armor, Rigs, Bags, & Accessories -> **Weaver**
     - Cybernetic Augments -> **Ripperdoc**
@@ -68,6 +68,17 @@ All mod-added elements (toggles, notifications, menu options, modal dialogs, and
 - **Turkish / Türkçe** (`tr`)
 - **Simplified Chinese / 简体中文** (`zh`)
 - **Traditional Chinese / 繁體中文** (`zhtw`)
+
+### 10. Insanity Background Generation & Layer Step Visual Progress Indicator
+- Auto-clickers continue processing in the background when navigating away from the Insanity minigame tab (while raiding in Operations, managing Stash/Loadout, Crafting in Tech Table, or Trading).
+- Deals auto-attack damage, defeats enemies, collects Insanity currency, rolls boss caches, advances layers, and updates checkpoints seamlessly.
+- **100% Silent & Performance-Optimized**: Suppresses all SFX, VFX (screen shake, flash), and death screen overlays while running in the background. Does not touch hidden DOM elements, ensuring zero FPS drop during raids or hideout navigation.
+- **Visual Progress Indicator**: Fills the "INSANITY" navigation menu button across the top bar, Hub Terminal (`[ INSANITY ]`), and NavDock from left to right with a clean slate grey fill (`--uh-ins-fill`) indicating the current 10-layer step and enemy HP progression.
+
+### 11. SKILLS Asterisk Indicator on Unspent Points
+- Dynamically attaches an asterisk `*` to any button that leads to SKILLS and reads as SKILLS (`SKILLS *`, `[ SKILLS * ]`) whenever the player has unspent skill points to allocate (`availablePoints > 0`).
+- Seamlessly clears the asterisk once all points are spent.
+- Works across all navigation views (Top Bar, Hub Terminal, NavDock) and is fully compatible with all 12 supported languages.
 
 Uses a dual-layer internationalization architecture:
 1. **Dynamic Runtime Injection**: Injects mod dictionaries into the game's `I18N` engine so translations work dynamically upon booting and switching languages in-game.
