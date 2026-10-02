@@ -7,7 +7,11 @@
     "TUTORIAL SKIPPED": "TUTORIAL SKIPPED",
     "All tutorial & mentor rewards granted! Welcome, Operator.": "All tutorial & mentor rewards granted! Welcome, Operator.",
     "Minigame Idle Mode": "Minigame Idle Mode",
-    "Auto-complete lockpick/hacking (10s wait, no penalty)": "Auto-complete lockpick/hacking (10s wait, no penalty)"
+    "Auto-complete lockpick/hacking (10s wait, no penalty)": "Auto-complete lockpick/hacking (10s wait, no penalty)",
+    "Buy Ammo": "Buy Ammo",
+    "Buy from Trader": "Buy from Trader",
+    "EQUIP ITEM": "EQUIP ITEM",
+    "No compatible items in stash": "No compatible items in stash"
   },
   "de": {
     "Equip": "Anlegen",
@@ -17,7 +21,11 @@
     "TUTORIAL SKIPPED": "TUTORIAL ÜBERSPRUNGEN",
     "All tutorial & mentor rewards granted! Welcome, Operator.": "Alle Tutorial- und Mentor-Belohnungen erhalten! Willkommen, Operator.",
     "Minigame Idle Mode": "Minispiel-Idle-Modus",
-    "Auto-complete lockpick/hacking (10s wait, no penalty)": "Schlossknacken/Hacking automatisch abschließen (10s Wartezeit, keine Strafe)"
+    "Auto-complete lockpick/hacking (10s wait, no penalty)": "Schlossknacken/Hacking automatisch abschließen (10s Wartezeit, keine Strafe)",
+    "Buy Ammo": "Munition kaufen",
+    "Buy from Trader": "Beim Händler kaufen",
+    "EQUIP ITEM": "GEGENSTAND AUSRÜSTEN",
+    "No compatible items in stash": "Keine passenden Gegenstände im Lager"
   },
   "es": {
     "Equip": "Equipar",
@@ -27,7 +35,11 @@
     "TUTORIAL SKIPPED": "TUTORIAL OMITIDO",
     "All tutorial & mentor rewards granted! Welcome, Operator.": "¡Todas las recompensas de tutorial y mentor otorgadas! Bienvenido, Operador.",
     "Minigame Idle Mode": "Modo Inactivo de Minijuegos",
-    "Auto-complete lockpick/hacking (10s wait, no penalty)": "Autocompletar ganzúa/hackeo (10s espera, sin penalización)"
+    "Auto-complete lockpick/hacking (10s wait, no penalty)": "Autocompletar ganzúa/hackeo (10s espera, sin penalización)",
+    "Buy Ammo": "Comprar Munición",
+    "Buy from Trader": "Comprar al Comerciante",
+    "EQUIP ITEM": "EQUIPAR OBJETO",
+    "No compatible items in stash": "No hay objetos compatibles en el alijo"
   },
   "fr": {
     "Equip": "Équiper",
@@ -37,7 +49,11 @@
     "TUTORIAL SKIPPED": "TUTORIEL PASSÉ",
     "All tutorial & mentor rewards granted! Welcome, Operator.": "Toutes les récompenses de tutoriel et de mentor accordées ! Bienvenue, Opérateur.",
     "Minigame Idle Mode": "Mode Idle Mini-jeux",
-    "Auto-complete lockpick/hacking (10s wait, no penalty)": "Crochetage/Piratage auto (10s attente, sans pénalité)"
+    "Auto-complete lockpick/hacking (10s wait, no penalty)": "Crochetage/Piratage auto (10s attente, sans pénalité)",
+    "Buy Ammo": "Acheter des Munitions",
+    "Buy from Trader": "Acheter au Marchand",
+    "EQUIP ITEM": "ÉQUIPER OBJET",
+    "No compatible items in stash": "Aucun objet compatible dans la planque"
   },
   "ja": {
     "Equip": "装備",
@@ -47,7 +63,11 @@
     "TUTORIAL SKIPPED": "チュートリアルをスキップしました",
     "All tutorial & mentor rewards granted! Welcome, Operator.": "すべてのチュートリアル＆メンター報酬を獲得しました！ようこそ、オペレーター。",
     "Minigame Idle Mode": "ミニゲーム放置モード",
-    "Auto-complete lockpick/hacking (10s wait, no penalty)": "ピッキング/ハッキングの自動完了（10秒待機、ペナルティなし）"
+    "Auto-complete lockpick/hacking (10s wait, no penalty)": "ピッキング/ハッキングの自動完了（10秒待機、ペナルティなし）",
+    "Buy Ammo": "弾薬を購入",
+    "Buy from Trader": "トレーダーから購入",
+    "EQUIP ITEM": "アイテムを装備",
+    "No compatible items in stash": "スタッシュに適合するアイテムがありません"
   },
   "ko": {
     "Equip": "장착",
@@ -57,7 +77,11 @@
     "TUTORIAL SKIPPED": "튜토리얼 건너뜀",
     "All tutorial & mentor rewards granted! Welcome, Operator.": "모든 튜토리얼 및 멘토 보상이 지급되었습니다! 환영합니다, 오퍼레이터.",
     "Minigame Idle Mode": "미니게임 방치 모드",
-    "Auto-complete lockpick/hacking (10s wait, no penalty)": "락픽/해킹 자동 완료 (10초 대기, 페널티 없음)"
+    "Auto-complete lockpick/hacking (10s wait, no penalty)": "락픽/해킹 자동 완료 (10초 대기, 페널티 없음)",
+    "Buy Ammo": "탄약 구매",
+    "Buy from Trader": "상인에게서 구매",
+    "EQUIP ITEM": "아이템 장착",
+    "No compatible items in stash": "창고에 호환되는 아이템이 없습니다"
   },
   "pl": {
     "Equip": "Załóż",
@@ -67,7 +91,11 @@
     "TUTORIAL SKIPPED": "SAMOUCZEK POMINIĘTY",
     "All tutorial & mentor rewards granted! Welcome, Operator.": "Wszystkie nagrody za samouczek i mentora przyznane! Witaj, Operatorze.",
     "Minigame Idle Mode": "Tryb bezczynności minigier",
-    "Auto-complete lockpick/hacking (10s wait, no penalty)": "Autoukończenie wytrychu/hakowania (10s oczekiwania, brak kary)"
+    "Auto-complete lockpick/hacking (10s wait, no penalty)": "Autoukończenie wytrychu/hakowania (10s oczekiwania, brak kary)",
+    "Buy Ammo": "Kup amunicję",
+    "Buy from Trader": "Kup u handlarza",
+    "EQUIP ITEM": "WYPOSAŻ PRZEDMIOT",
+    "No compatible items in stash": "Brak pasujących przedmiotów w schowku"
   },
   "pt": {
     "Equip": "Equipar",
@@ -77,7 +105,11 @@
     "TUTORIAL SKIPPED": "TUTORIAL PULADO",
     "All tutorial & mentor rewards granted! Welcome, Operator.": "Todas as recompensas do tutorial e mentor foram concedidas! Bem-vindo, Operador.",
     "Minigame Idle Mode": "Modo Ocioso de Minijogos",
-    "Auto-complete lockpick/hacking (10s wait, no penalty)": "Autoconcluir lockpick/hacking (10s de espera, sem penalidade)"
+    "Auto-complete lockpick/hacking (10s wait, no penalty)": "Autoconcluir lockpick/hacking (10s de espera, sem penalidade)",
+    "Buy Ammo": "Comprar Munição",
+    "Buy from Trader": "Comprar do Comerciante",
+    "EQUIP ITEM": "EQUIPAR ITEM",
+    "No compatible items in stash": "Nenhum item compatível no estoque"
   },
   "ru": {
     "Equip": "Экипировать",
@@ -87,7 +119,11 @@
     "TUTORIAL SKIPPED": "ОБУЧЕНИЕ ПРОПУЩЕНО",
     "All tutorial & mentor rewards granted! Welcome, Operator.": "Все награды за обучение и наставника получены! Добро пожаловать, Оператор.",
     "Minigame Idle Mode": "Режим авто-мини-игр",
-    "Auto-complete lockpick/hacking (10s wait, no penalty)": "Авто-взлом замков/терминалов (10 сек. ожидания, без штрафа)"
+    "Auto-complete lockpick/hacking (10s wait, no penalty)": "Авто-взлом замков/терминалов (10 сек. ожидания, без штрафа)",
+    "Buy Ammo": "Купить боеприпасы",
+    "Buy from Trader": "Купить у торговца",
+    "EQUIP ITEM": "ЭКИПИРОВАТЬ ПРЕДМЕТ",
+    "No compatible items in stash": "В хранилище нет подходящих предметов"
   },
   "tr": {
     "Equip": "Kuşan",
@@ -97,7 +133,11 @@
     "TUTORIAL SKIPPED": "EĞİTİM ATLANDI",
     "All tutorial & mentor rewards granted! Welcome, Operator.": "Tüm eğitim ve rehber ödülleri verildi! Hoş geldin, Operatör.",
     "Minigame Idle Mode": "Mini Oyun Boşta Modu",
-    "Auto-complete lockpick/hacking (10s wait, no penalty)": "Maymuncuk/hacklemeyi otomatik tamamla (10 sn bekleme, ceza yok)"
+    "Auto-complete lockpick/hacking (10s wait, no penalty)": "Maymuncuk/hacklemeyi otomatik tamamla (10 sn bekleme, ceza yok)",
+    "Buy Ammo": "Mühimmat Satın Al",
+    "Buy from Trader": "Tüccardan Satın Al",
+    "EQUIP ITEM": "EŞYA KUŞAN",
+    "No compatible items in stash": "Zulada uyumlu eşya yok"
   },
   "zh": {
     "Equip": "装备",
@@ -107,7 +147,11 @@
     "TUTORIAL SKIPPED": "教程已跳过",
     "All tutorial & mentor rewards granted! Welcome, Operator.": "已发放所有教程和导师奖励！欢迎，操作员。",
     "Minigame Idle Mode": "小游戏放置模式",
-    "Auto-complete lockpick/hacking (10s wait, no penalty)": "自动完成撬锁/黑客（等待10秒，无惩罚）"
+    "Auto-complete lockpick/hacking (10s wait, no penalty)": "自动完成撬锁/黑客（等待10秒，无惩罚）",
+    "Buy Ammo": "购买弹药",
+    "Buy from Trader": "向商人购买",
+    "EQUIP ITEM": "装备物品",
+    "No compatible items in stash": "仓库中没有兼容的物品"
   },
   "zhtw": {
     "Equip": "裝備",
@@ -117,6 +161,10 @@
     "TUTORIAL SKIPPED": "教程已跳過",
     "All tutorial & mentor rewards granted! Welcome, Operator.": "已發放所有教程和導師獎勵！歡迎，操作員。",
     "Minigame Idle Mode": "小遊戲放置模式",
-    "Auto-complete lockpick/hacking (10s wait, no penalty)": "自動完成撬鎖/黑客（等待10秒，無懲罰）"
+    "Auto-complete lockpick/hacking (10s wait, no penalty)": "自動完成撬鎖/黑客（等待10秒，無懲罰）",
+    "Buy Ammo": "購買彈藥",
+    "Buy from Trader": "向商人購買",
+    "EQUIP ITEM": "裝備物品",
+    "No compatible items in stash": "倉庫中沒有相容的物品"
   }
 }

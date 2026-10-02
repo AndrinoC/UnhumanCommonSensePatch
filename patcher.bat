@@ -35,11 +35,18 @@ echo   [4] Double Click to Equip / Unequip Items
 echo       - Double-click items in stash to equip or auto-pack
 echo       - Double-click equipped items or augments to unequip
 echo.
-echo   [5] Right-Click Context Menu Equip / Unequip
+echo   [5] Right-Click Context Menu Options
 echo       - Adds "Equip" option when right-clicking stash items
 echo       - Adds "Unequip" option when right-clicking loadout items
+echo       - Adds "Buy Ammo" option when right-clicking equipped weapons
 echo.
-echo   [6] Full Multi-Language Support (12 Languages)
+echo   [6] Weapon Hover Magazine Highlighting
+echo       - Hovering any weapon highlights compatible magazines in stash & loadout
+echo.
+echo   [7] Empty Slot Quick-Equip Modal & Trader Direct-Buy
+echo       - Click empty loadout slot to view/equip stash items or jump to trader
+echo.
+echo   [8] Full Multi-Language Support (12 Languages)
 echo       - Localized in EN, DE, ES, FR, JA, KO, PL, PT, RU, TR, ZH, ZHTW
 echo.
 echo ============================================================
