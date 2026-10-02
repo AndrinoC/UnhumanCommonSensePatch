@@ -73,6 +73,7 @@ All mod-added elements (toggles, notifications, menu options, modal dialogs, and
 - Auto-clickers continue processing in the background when navigating away from the Insanity minigame tab (while raiding in Operations, managing Stash/Loadout, Crafting in Tech Table, or Trading).
 - Deals auto-attack damage, defeats enemies, collects Insanity currency, rolls boss caches, advances layers, and updates checkpoints seamlessly.
 - **100% Silent & Performance-Optimized**: Suppresses all SFX, VFX (screen shake, flash), and death screen overlays while running in the background. Does not touch hidden DOM elements, ensuring zero FPS drop during raids or hideout navigation.
+- **Auto-Reset to Layer 1 on Death**: If auto Insanity is defeated by a difficult layer or boss, it automatically resets to Layer 1 rather than locking into an unwinnable checkpoint death loop. This enables continuous autonomous farming of Insanity currency from earlier layers, while preserving the highest layer reached (`runBest`).
 - **Visual Progress Indicator**: Fills the "INSANITY" navigation menu button across the top bar, Hub Terminal (`[ INSANITY ]`), and NavDock from left to right with a clean slate grey fill (`--uh-ins-fill`) indicating the current 10-layer step and enemy HP progression.
 
 ### 11. SKILLS Asterisk Indicator on Unspent Points
