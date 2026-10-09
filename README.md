@@ -10,15 +10,17 @@ The patcher modifies the game package directly (`package.nw\unhuman.html` and `p
 1. [Features Overview](#features-overview)
    - [Core Inventory & Convenience (Features 1–10)](#core-inventory--convenience)
    - [Endgame Abyss & Gear Safeguards (Features 11–12)](#endgame-abyss--gear-safeguards)
-   - [Raid-Synergy & Hideout Economy Overhaul (Features 13–19)](#raid-synergy--hideout-economy-overhaul)
+   - [Signal Corruption Nexus & Raid Progression Overhaul (Features 13–18)](#signal-corruption-nexus--raid-progression-overhaul)
+   - [Hideout Economy & Military Decryption (Features 19–22)](#hideout-economy--military-decryption)
 2. [Configuration Guide (How to Change Values)](#configuration-guide-how-to-change-values)
    - [1. Raid Extraction Insanity Formula](#1-raid-extraction-insanity-formula)
    - [2. Mining Rig Economy & Decryption Tuning](#2-mining-rig-economy--decryption-tuning)
    - [3. Military Drive Loot Drop Chances](#3-military-drive-loot-drop-chances)
    - [4. Endgame Abyss & Mythic Upgrade Rates](#4-endgame-abyss--mythic-upgrade-rates)
-   - [5. Tutorial Skip Starting Rewards](#5-tutorial-skip-starting-rewards)
-   - [6. Visual Themes, Highlights & Colors](#6-visual-themes-highlights--colors)
-   - [7. Editing Translations & Text](#7-editing-translations--text)
+   - [5. Hollow Crown & Communion Talent Tuning](#5-hollow-crown--communion-talent-tuning)
+   - [6. Tutorial Skip Starting Rewards](#6-tutorial-skip-starting-rewards)
+   - [7. Visual Themes, Highlights & Colors](#7-visual-themes-highlights--colors)
+   - [8. Editing Translations & Text](#8-editing-translations--text)
 3. [How to Enable & Disable Specific Features](#how-to-enable--disable-specific-features)
    - [In-Game Toggles](#in-game-toggles)
    - [Patch-Level Toggles (Code)](#patch-level-toggles-code)
@@ -116,7 +118,7 @@ English (`en`), German (`de`), Spanish (`es`), French (`fr`), Japanese (`ja`), K
 
 ---
 
-### Raid-Synergy & Hideout Economy Overhaul
+### Signal Corruption Nexus & Raid Progression Overhaul
 
 #### 13. In-Raid Insanity Harvest & Extraction Summary
 * **Raid-Driven Currency**: Replaces disjointed idle grinding by awarding Insanity directly upon **successful raid extraction**.
@@ -125,28 +127,57 @@ English (`en`), German (`de`), Spanish (`es`), French (`fr`), Japanese (`ja`), K
 * **High Extraction Stakes**: If killed in action (KIA), you earn **strictly 0 Insanity**. You must extract alive to secure your harvested corruption.
 * **Extraction Summary Screen**: Harvested Insanity is displayed prominently on the post-raid summary modal (`+X INSANITY HARVESTED` in purple neon `#c084fc`), eliminating toast banner notification spam.
 
-#### 14. Streamlined Signal Research Station (Insanity Tab)
-* **Research Focus**: Permanently hides the tedious ASCII auto-clicker combat arena (`#igArena`) with clean CSS layout expansion (`max-width: 960px`).
-* **Clean Research Console**: The Insanity Tab now serves purely as a research station to view and manage Signal Masteries, open corruption caches, and check your Insanity currency balance.
-* **Zero Automation Noise**: Neutralizes background combat loop timers (`enemyTick`, `_startAutos`) and filters out obsolete auto-clicker upgrade cards from the Insanity shop.
+#### 14. Signal Corruption Nexus UI Overhaul
+* **Signal Corruption Nexus Dashboard**: Rebuilds `#view-insanity` into an immersive terminal command nexus.
+* **Live Telemetry Banner**: Displays your live **Insanity** balance, **Abyss Flux** balance, **Hollow Crown Milestone** tier (Tier I–X), and active **Sin Frenzy** bonus timer directly in the header.
+* **Sub-Navigation Tabs**: Features seamless one-click toggles between:
+  * `[ ⛧ MADNESS PROTOCOL ]`: The full mastery talent tree with interactive progression.
+  * `[ 📦 SIGNAL CACHES ]`: High-yield scrap, power, prototype, and mythic corruption caches.
+* **Purged Minigame Noise**: The entire ASCII auto-clicker arena (`#igArena`), click attack buttons, hull durability bars, and minigame rebirth reset buttons have been permanently purged.
 
-#### 15. Exclusive Raid Weapons (Insanity Cache Rebalance)
-* **Preserving Raid Value**: Strips raw Prototype and Mythic weapons from Insanity caches so the most coveted end-game gear is earned exclusively from raid extraction and boss encounters.
+#### 15. Pure Raid & Material Caches (Exclusive Raid Gear)
+* **Preserving Raid Value**: Strips raw Prototype and Mythic weapons from Insanity caches so the most coveted end-game weapons remain strictly earned in raid extractions and boss drops.
 * **High-Tier Crafting & Currency**:
+  * **Scrap Cache**: Drops tech scrap, weapon repair kits, and starter components (no dead idle boost buffs).
+  * **Power Cache**: Drops heavy weapon parts, high-tier armor plates, and power converters.
   * **Proto Cache**: Drops high-value Tech Flash Drives (`tech_drive_flash`), Expansion Parts (`tech_part_expansion`), and Insanity currency.
   * **Mythic Cache**: Drops guaranteed Kernel Chips (`tech_chip_kernel`), **$1,500,000 credit bundles**, and **5,000 Abyss Flux**.
 
-#### 16. Mining Rig Economy Overhaul (15× Yield & 75% Fuel Cut)
+#### 16. Permanent Madness Protocol Unlock & Seamless Migration
+* **Zero Rebirth Requirement**: Completely abolishes the old minigame rebirth lock (`REBIRTH TO UNLOCK`). The Madness Protocol talent tree is unlocked and available immediately (`InsanityTree.unlocked = true`).
+* **Dual-Container Mounting**: Mastery talents can now be viewed, allocated, and respecced from both:
+  * **Signal Corruption Nexus** (`#view-insanity` under the `[ ⛧ MADNESS PROTOCOL ]` sub-tab)
+  * **Loadout > Mastery** (`#view-nexus-mastery`)
+  Both views remain synchronized in real-time.
+* **Seamless Rank Migration**: Saves with existing ranks in legacy nodes automatically convert 1:1 on game load to the reworked nodes without losing spent points.
+
+#### 17. Communion Talents Rework (Raid-Anchored Mastery Perks)
+Replaces the four legacy idle auto-clicker talents with powerful combat, speed, loot, and economic passives:
+1. **Signal Resonance** (`signal_reso`, 5 ranks): Increases in-raid movement speed by **+4% per rank** (up to **+20% max speed**). Wired directly into `Game.getStats().spd`.
+2. **Scavenger's Eye** (`scav_eye`, 5 ranks): Boosts in-raid container loot rarity by **+5% per rank** (up to **+25% max**). Multiplies `Game.getStats().loot_rarity`.
+3. **Eldritch Surge** (`eldritch_surge`, 5 ranks): Amplifies all medical item healing effectiveness by **+3% per rank** (up to **+15% max**). Wired into `startHealing()`.
+4. **Corrupted Bargain** (`corrupt_bargain`, 5 ranks): Grants a **3% discount per rank** (up to **15% max**) on opening Signal Caches in the Nexus. Wired into `InsanityGame._cacheCost`.
+
+#### 18. Hollow Crown Raid Milestone (Warden Scaling & Damage Boost)
+* **Re-Anchored to Raid Combat**: Hollow Crown is completely detached from idle prestige resets. It now tracks your combat mastery against elite enemies:
+  * Automatically calculates **1 Crown Tier per 5 Wardens / Bosses slain** (Tier I at 5 kills, up to Tier X at 50 kills).
+* **Direct Combat Power**: Each Hollow Crown tier grants a flat **+10% Weapon Damage** in raids (up to **+100% raid damage** at Tier X), wired directly into `Game.getStats().damage`.
+
+---
+
+### Hideout Economy & Military Decryption
+
+#### 19. Mining Rig Economy Overhaul (15× Yield & 75% Fuel Cut)
 * **Meaningful Hideout Income**: Mining Rig Bitcoin generation rate is boosted **15×** (from `0.0001` to `0.0015` BTC per minute per active GPU).
 * **Extended Operation**: Fuel consumption rate is reduced by **75%** (from `1.0` to `0.25` fuel per minute). A full 100-fuel tank now lasts **6.6 hours** of continuous mining rather than draining in 100 minutes.
 * **Subsidizes Raids**: Mining revenue now reliably funds your raid ammunition, weapon maintenance, gear repair, and insurance fees.
 
-#### 17. One-Click Bitcoin Cashout Button
+#### 20. One-Click Bitcoin Cashout Button
 * Adds an interactive `[ 💰 SELL ALL BTC (+$X) ]` button in the Mining Rig header.
 * Instantly liquidates all accumulated Bitcoin into in-game credits at current market rates without navigating through multiple trader submenus.
 * Live status header dynamically updates your estimated USD payout as Bitcoin is mined.
 
-#### 18. Decryption Station & Military Drives
+#### 21. Decryption Station & Military Drives
 * **New Barter Item**: Adds **Encrypted Military Drive** (`encrypted_drive`, $50,000 value, 1x1 grid size, intel category, fits in secure pouches).
 * **Raid Drops**: Found in raid POI loot containers (15% chance) and guaranteed on raid bosses and wardens (100% drop).
 * **Decryption Station**: Adds an interactive `[ ⚡ DECRYPT MILITARY DRIVE ]` button to the Mining Rig header. Instantly cracks encrypted drives in your stash or pouch into guaranteed crafting codes.
@@ -154,7 +185,7 @@ English (`en`), German (`de`), Spanish (`es`), French (`fr`), Japanese (`ja`), K
   * **1–4 GPUs**: 45% Kernel code, 40% Patch code, 10% Anchor code, 5% Glitch code.
   * **5+ GPUs**: 45% Kernel code, 25% Glitch code, 20% Patch code, 10% Anchor code.
 
-#### 19. Stash-Level Vault Code Injection
+#### 22. Stash-Level Vault Code Injection
 * Right-clicking any weapon or armor in your stash or loadout adds a new **"Apply Vault Code"** context menu option.
 * Opens an interactive **Vault Code Selection Modal** displaying all compatible Kernel, Patch, and Glitch codes currently stored in your Tech Craft Code Vault.
 * Selecting a code installs the desired affix directly onto your gear using existing terminal crafting logic, auto-recalculates item stats via `ItemFactory`, and consumes the code from your vault. Eliminates the need to manually memorize or type 12-character strings into terminal command lines.
@@ -270,7 +301,42 @@ r.upgradeLevel = (r.upgradeLevel >= 5) ? Math.max(5, r.upgradeLevel - 1) : Math.
 
 ---
 
-### 5. Tutorial Skip Starting Rewards
+### 5. Hollow Crown & Communion Talent Tuning
+
+#### Hollow Crown Scaling & Damage Multiplier
+Located in patches **`"Hollow Crown & Nexus Navigation in InsanityGame"`** and **`"Game.getStats Hollow Crown & Perks Wiring"`**:
+
+```javascript
+// Warden Milestone: 1 Crown Tier per 5 Wardens Slain (capped at Tier X)
+crownTier() {
+    const w = (Game.data && Game.data.bossesKilled) || 0;
+    return Math.min(10, Math.floor(w / 5));
+}
+
+// In-Raid Weapon Damage Boost: +10% damage per Crown Tier (up to +100% at Tier X)
+const cT = (typeof InsanityGame !== "undefined" && InsanityGame.crownTier) ? InsanityGame.crownTier() : 0;
+if (cT > 0 && e.damage) {
+    e.damage = Math.floor(e.damage * (1 + 0.1 * cT));
+}
+```
+* **Kills required per tier**: Change `5` in `Math.floor(w / 5)` (e.g. `10` for 1 tier per 10 wardens).
+* **Maximum tier cap**: Change `10` in `Math.min(10, ...)`.
+* **Damage bonus percentage**: Change `0.1` in `(1 + 0.1 * cT)` (e.g. `0.05` for +5% per tier).
+
+#### Communion Talent Rates & Maximum Caps
+Located in patches **`"Communion Branch: Raid-Anchored Mastery Talents Rework"`**, **`"InsanityTree: Effects Rework"`**, and combat wiring patches:
+
+```javascript
+// Base talent node definitions: 5 ranks each
+signal_reso:     { maxRank: 5, spdPerRank: 0.04 }     // +4% movement speed per rank (max +20%)
+scav_eye:        { maxRank: 5, rarityPerRank: 0.05 }  // +5% container loot rarity per rank (max +25%)
+eldritch_surge:  { maxRank: 5, healPerRank: 0.03 }    // +3% medical healing per rank (max +15%)
+corrupt_bargain: { maxRank: 5, discPerRank: 0.03 }    // 3% cache discount per rank (max 15%)
+```
+
+---
+
+### 6. Tutorial Skip Starting Rewards
 
 Located under patch **`"1b. finalizeCharacter Hook & skipTutorialAndGrantRewards"`**:
 
@@ -289,7 +355,7 @@ Located under patch **`"1b. finalizeCharacter Hook & skipTutorialAndGrantRewards
 
 ---
 
-### 6. Visual Themes, Highlights & Colors
+### 7. Visual Themes, Highlights & Colors
 
 Located inside the embedded CSS block (`<style id="uh-mod-styles">`) in patch **`"Double-Click & Quick Stash & Hover & Empty Slot & Vault Modal Handler"`**:
 
@@ -311,7 +377,7 @@ Located inside the embedded CSS block (`<style id="uh-mod-styles">`) in patch **
 
 ---
 
-### 7. Editing Translations & Text
+### 8. Editing Translations & Text
 
 All user-facing text strings are centralized in **[`translations.json`](translations.json)**.
 
@@ -332,9 +398,13 @@ To customize any button label, notification, or modal text:
        "DECRYPT MILITARY DRIVE": "DECRYPT MILITARY DRIVE",
        "Apply Vault Code": "Apply Vault Code",
        "Select Vault Code": "Select Vault Code",
-       "No compatible codes in vault": "No compatible codes in vault",
-       "No Encrypted Drive in Stash or Pouch": "No Encrypted Drive in Stash or Pouch",
-       "Encrypted Military Drive": "Encrypted Military Drive"
+       "SIGNAL CORRUPTION NEXUS": "SIGNAL CORRUPTION NEXUS",
+       "MADNESS PROTOCOL": "MADNESS PROTOCOL",
+       "SIGNAL CACHES": "SIGNAL CACHES",
+       "SIGNAL RESONANCE": "SIGNAL RESONANCE",
+       "SCAVENGER'S EYE": "SCAVENGER'S EYE",
+       "ELDRITCH SURGE": "ELDRITCH SURGE",
+       "CORRUPTED BARGAIN": "CORRUPTED BARGAIN"
    }
    ```
 4. Re-run `patcher.bat` -> Select **`[1] Apply Mod Patch`**.
@@ -410,10 +480,13 @@ Use this table to quickly find the exact patch name to edit or disable for each 
 | **Mining Rig Quick Sell & Decrypt Buttons** | `Mining Rig UI: Quick Sell BTC & Decrypt Station Buttons` |
 | **Mining Rig Header Live Updates** | `Mining Rig UI: Status Bar Live Dynamic Updates` |
 | **Raid Extraction Insanity Harvest** | `Raid Extraction: In-Raid Insanity Harvest & Summary Display` |
-| **Insanity Caches Rebalance (Exclusive Raid Gear)** | `Insanity Caches Rebalance (Exclusive Raid Gear)` |
-| **Cache Rewards Material & Currency Support** | `Insanity Cache Rewards: Material & Currency Support` |
-| **Cache Claim Currency & Flux Support** | `Insanity Cache Claim: Add Currency, Money & Flux` |
-| **Insanity Shop Auto-Clicker Filter** | `Insanity Shop: Filter Out Automation Auto-Clickers` |
+| **Signal Corruption Nexus UI Overhaul** | `Signal Corruption Nexus: UI Dashboard & Sub-Tabs Overhaul` |
+| **Communion Branch Talents Rework** | `Communion Branch: Raid-Anchored Mastery Talents Rework`<br>`InsanityTree: Effects Rework`<br>`InsanityTree: allocate & respec Nexus Sync` |
+| **Permanent Madness Protocol Unlock** | `InsanityTree: Permanent Unlock & Node Migration`<br>`InsanityTree: canAllocate Unlock`<br>`InsanityTree: renderUI Dual Mount Start`<br>`InsanityTree: renderUI Template Var`<br>`InsanityTree: renderUI End targets.forEach` |
+| **Hollow Crown Warden Milestone** | `Hollow Crown & Nexus Navigation in InsanityGame`<br>`InsanityGame.enter Nexus Initializer`<br>`Game.getStats Hollow Crown & Perks Wiring` |
+| **Pure Raid & Material Caches** | `Insanity Caches Rebalance (Exclusive Raid Gear, Flux & Tech Economy)`<br>`Insanity Cache Rewards: Material & Currency Support`<br>`Insanity Cache Claim: Add Currency, Money & Flux` |
+| **Corrupted Bargain Cache Discount** | `Corrupted Bargain Cache Discount in InsanityGame._cacheCost` |
+| **Eldritch Surge Medical Healing Boost** | `Eldritch Surge Healing Boost` |
 
 ---
 
