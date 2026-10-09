@@ -576,7 +576,7 @@ function Apply-Patch {
         @{
             Name = 'InsanityTree: canAllocate Unlock'
             Target = 'if(!this.unlocked())return{can:!1,reason:"REBIRTH TO UNLOCK"};'
-            Replacement = '// Unlocked permanently'
+            Replacement = '/* Unlocked permanently */'
             ExpectedCount = 1
         },
         @{

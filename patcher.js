@@ -278,7 +278,7 @@ function getPatches(minifiedI18nJson) {
         {
             "name": "InsanityTree: canAllocate Unlock",
             "target": "if(!this.unlocked())return{can:!1,reason:\"REBIRTH TO UNLOCK\"};",
-            "replacement": "// Unlocked permanently",
+            "replacement": "/* Unlocked permanently */",
             "expectedCount": 1
         },
         {
