@@ -10,7 +10,7 @@ The patcher modifies the game package directly (`package.nw\unhuman.html` and `p
 1. [Features Overview](#features-overview)
    - [Core Inventory & Convenience (Features 1–10)](#core-inventory--convenience)
    - [Endgame Abyss & Gear Safeguards (Features 11–12)](#endgame-abyss--gear-safeguards)
-   - [Signal Corruption Nexus & Raid Progression Overhaul (Features 13–18)](#signal-corruption-nexus--raid-progression-overhaul)
+   - [Signal Corruption Nexus & Raid Progression Overhaul (Features 13–18, 23)](#signal-corruption-nexus--raid-progression-overhaul)
    - [Hideout Economy & Military Decryption (Features 19–22)](#hideout-economy--military-decryption)
 2. [Configuration Guide (How to Change Values)](#configuration-guide-how-to-change-values)
    - [1. Raid Extraction Insanity Formula](#1-raid-extraction-insanity-formula)
@@ -128,11 +128,11 @@ English (`en`), German (`de`), Spanish (`es`), French (`fr`), Japanese (`ja`), K
 * **Extraction Summary Screen**: Harvested Insanity is displayed prominently on the post-raid summary modal (`+X INSANITY HARVESTED` in purple neon `#c084fc`), eliminating toast banner notification spam.
 
 #### 14. Signal Corruption Nexus UI Overhaul
-* **Signal Corruption Nexus Dashboard**: Rebuilds `#view-insanity` into an immersive terminal command nexus.
-* **Live Telemetry Banner**: Displays your live **Insanity** balance, **Abyss Flux** balance, **Hollow Crown Milestone** tier (Tier I–X), and active **Sin Frenzy** bonus timer directly in the header.
-* **Sub-Navigation Tabs**: Features seamless one-click toggles between:
-  * `[ ⛧ MADNESS PROTOCOL ]`: The full mastery talent tree with interactive progression.
-  * `[ 📦 SIGNAL CACHES ]`: High-yield scrap, power, prototype, and mythic corruption caches.
+* **Signal Corruption Nexus Dashboard**: Rebuilds `#view-insanity` into an authentic terminal command nexus matching the dark `#0a0a0a` and terminal green `#00ff41` aesthetics of the Skills and Tech Terminal views.
+* **Live Telemetry Banner**: Displays your live **Insanity** balance, **Abyss Flux** balance, **Hollow Crown Milestone** tier (Tier I–X), and active **Sin Frenzy** bonus directly in the header.
+* **Sub-Navigation Tabs**: Features clean, native `.terminal-tab` toggles between:
+  * `[ MADNESS PROTOCOL ]`: The full mastery talent tree with interactive progression.
+  * `[ SIGNAL CACHES ]`: High-yield scrap, armory, aegis, power, prototype, and mythic corruption caches.
 * **Purged Minigame Noise**: The entire ASCII auto-clicker arena (`#igArena`), click attack buttons, hull durability bars, and minigame rebirth reset buttons have been permanently purged.
 
 #### 15. Pure Raid & Material Caches (Exclusive Raid Gear)
@@ -146,7 +146,7 @@ English (`en`), German (`de`), Spanish (`es`), French (`fr`), Japanese (`ja`), K
 #### 16. Permanent Madness Protocol Unlock & Seamless Migration
 * **Zero Rebirth Requirement**: Completely abolishes the old minigame rebirth lock (`REBIRTH TO UNLOCK`). The Madness Protocol talent tree is unlocked and available immediately (`InsanityTree.unlocked = true`).
 * **Dual-Container Mounting**: Mastery talents can now be viewed, allocated, and respecced from both:
-  * **Signal Corruption Nexus** (`#view-insanity` under the `[ ⛧ MADNESS PROTOCOL ]` sub-tab)
+  * **Signal Corruption Nexus** (`#view-insanity` under the `[ MADNESS PROTOCOL ]` sub-tab)
   * **Loadout > Mastery** (`#view-nexus-mastery`)
   Both views remain synchronized in real-time.
 * **Seamless Rank Migration**: Saves with existing ranks in legacy nodes automatically convert 1:1 on game load to the reworked nodes without losing spent points.
@@ -163,6 +163,12 @@ Replaces the four legacy idle auto-clicker talents with powerful combat, speed, 
   * Automatically calculates **1 Crown Tier per 5 Wardens / Bosses slain** (Tier I at 5 kills, up to Tier X at 50 kills).
 * **Direct Combat Power**: Each Hollow Crown tier grants a flat **+10% Weapon Damage** in raids (up to **+100% raid damage** at Tier X), wired directly into `Game.getStats().damage`.
 
+#### 23. Simultaneous Max Cache Opening & Reel Synchronizer
+* **Always Open Maximum Batch**: Clicking **OPEN** on any cache automatically opens the maximum owned quantity simultaneously (`OPEN ×N`), eliminating tedious one-by-one unboxing. If 0 caches are currently owned, clicking OPEN auto-purchases and cracks the maximum affordable batch based on your active multiplier.
+* **Simultaneous Reel Animations**: Displays slider reel animations for every single cache in the batch simultaneously inside a sleek, scrollable container (`max-height: 72vh`).
+* **Synchronized Timing & Deceleration**: Removed sequential stagger delays so all reels start, spin, decelerate, and land at the exact same moment (fixed 3.2s uniform duration).
+* **Single Harmonized Finish Sound**: Consolidates completion audio into a single clean chime when all reels land simultaneously, followed by an aggregated loot summary.
+
 ---
 
 ### Hideout Economy & Military Decryption
@@ -173,14 +179,14 @@ Replaces the four legacy idle auto-clicker talents with powerful combat, speed, 
 * **Subsidizes Raids**: Mining revenue now reliably funds your raid ammunition, weapon maintenance, gear repair, and insurance fees.
 
 #### 20. One-Click Bitcoin Cashout Button
-* Adds an interactive `[ 💰 SELL ALL BTC (+$X) ]` button in the Mining Rig header.
+* Adds an interactive `[ SELL ALL BTC (+$X) ]` button in the Mining Rig header.
 * Instantly liquidates all accumulated Bitcoin into in-game credits at current market rates without navigating through multiple trader submenus.
 * Live status header dynamically updates your estimated USD payout as Bitcoin is mined.
 
 #### 21. Decryption Station & Military Drives
 * **New Barter Item**: Adds **Encrypted Military Drive** (`encrypted_drive`, $50,000 value, 1x1 grid size, intel category, fits in secure pouches).
 * **Raid Drops**: Found in raid POI loot containers (15% chance) and guaranteed on raid bosses and wardens (100% drop).
-* **Decryption Station**: Adds an interactive `[ ⚡ DECRYPT MILITARY DRIVE ]` button to the Mining Rig header. Instantly cracks encrypted drives in your stash or pouch into guaranteed crafting codes.
+* **Decryption Station**: Adds an interactive `[ DECRYPT MILITARY DRIVE ]` button to the Mining Rig header. Instantly cracks encrypted drives in your stash or pouch into guaranteed crafting codes.
 * **GPU Hash Rate Scaling**: The rarity of extracted codes scales dynamically with your active GPU farm:
   * **1–4 GPUs**: 45% Kernel code, 40% Patch code, 10% Anchor code, 5% Glitch code.
   * **5+ GPUs**: 45% Kernel code, 25% Glitch code, 20% Patch code, 10% Anchor code.
@@ -487,6 +493,7 @@ Use this table to quickly find the exact patch name to edit or disable for each 
 | **Pure Raid & Material Caches** | `Insanity Caches Rebalance (Exclusive Raid Gear, Flux & Tech Economy)`<br>`Insanity Cache Rewards: Material & Currency Support`<br>`Insanity Cache Claim: Add Currency, Money & Flux` |
 | **Corrupted Bargain Cache Discount** | `Corrupted Bargain Cache Discount in InsanityGame._cacheCost` |
 | **Eldritch Surge Medical Healing Boost** | `Eldritch Surge Healing Boost` |
+| **Simultaneous Max Cache Opening** | `InsanityGame.openCache: Always Open Max Simultaneously`<br>`InsanityGame._runCaseReel: Simultaneous Slider Duration`<br>`InsanityGame._runCaseReel: Synchronized Completion`<br>`InsanityGame.renderCaches: Open Max Button` |
 
 ---
 
