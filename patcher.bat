@@ -18,36 +18,20 @@ echo               UNHUMAN QUALITY-OF-LIFE MOD PATCHER
 echo ============================================================
 echo.
 echo   This patcher modifies package.nw\unhuman.html to include:
-echo.
-echo   [1] Tutorial Skip Toggle + Instant Rewards
-echo       - Adds toggle in Character Creation screen
-echo       - Deactivates tutorial ^& 18 mentor tasks
-echo       - Grants all rewards ($225k, Lv5, 4 SP, gear, chips)
-echo.
-echo   [2] Start Screen / Intro Splash Skip Toggle
-echo       - Adds toggle in Game Settings (ON by default)
-echo       - Allows instant skip by clicking or pressing any key
-echo.
-echo   [3] Remove Minigame Auto-Complete Penalty
-echo       - Removes -15%% loot penalty in Raid Filters
-echo.
-echo   [4] Double Click to Equip / Unequip Items
-echo       - Double-click items in stash to equip or auto-pack
-echo       - Double-click equipped items or augments to unequip
-echo.
-echo   [5] Right-Click Context Menu Options
-echo       - Adds "Equip" option when right-clicking stash items
-echo       - Adds "Unequip" option when right-clicking loadout items
-echo       - Adds "Buy Ammo" option when right-clicking equipped weapons
-echo.
-echo   [6] Weapon Hover Magazine Highlighting
-echo       - Hovering any weapon highlights compatible magazines in stash & loadout
-echo.
-echo   [7] Empty Slot Quick-Equip Modal & Trader Direct-Buy
-echo       - Click empty loadout slot to view/equip stash items or jump to trader
-echo.
-echo   [8] Full Multi-Language Support (12 Languages)
-echo       - Localized in EN, DE, ES, FR, JA, KO, PL, PT, RU, TR, ZH, ZHTW
+echo   - Tutorial Skip Toggle + Instant Rewards ($225k, Lv5, 4 SP, gear, chips)
+echo   - Start Screen / Intro Splash Skip Toggle (in Settings + Click/Key Skip)
+echo   - Double Click / Right-Click to Equip/Unequip items, Buy Ammo, Apply Codes
+echo   - Weapon Hover Magazine Highlighting + Empty Slot Quick-Equip Modal
+echo   - Multi-Language Support across 12 Languages (EN, DE, ES, FR, JA, KO, PL, PT, RU, TR, ZH, ZHTW)
+echo   - Skills Unspent Points Notification Asterisk on all nav buttons
+echo   - Mythic Weapon Upgrades (+1 to +10 Checkpoints, No Deletion, Fairer Odds)
+echo   - Nullpoint Abyss Fragment Merging (Safe Failure - Base Fragment Preserved, Fairer Fees)
+echo   - Raid Extraction Insanity: Harvest Insanity on extraction (Tier, Kills, Bosses; 0 on death)
+echo   - Streamlined Signal Research Station: ASCII combat hidden, clean Masteries/Caches/Wallet view
+echo   - Exclusive Raid Weapons: Prototypes/Mythics stripped from caches (caches drop chips, $1.5M, flux)
+echo   - Mining Rig Economy Overhaul: 15x Bitcoin yield + 75%% fuel reduction + One-Click Sell All BTC
+echo   - Decryption Station & Military Drives: Crack drives instantly for guaranteed crafting codes
+echo   - Stash Vault Code Application: Right-click gear -> "Apply Vault Code" directly target-crafts affixes
 echo.
 echo ============================================================
 echo   SELECT AN OPTION:

@@ -11,7 +11,15 @@
     "Buy Ammo": "Buy Ammo",
     "Buy from Trader": "Buy from Trader",
     "EQUIP ITEM": "EQUIP ITEM",
-    "No compatible items in stash": "No compatible items in stash"
+    "No compatible items in stash": "No compatible items in stash",
+    "INSANITY HARVESTED": "INSANITY HARVESTED",
+    "SELL ALL BTC": "SELL ALL BTC",
+    "DECRYPT MILITARY DRIVE": "DECRYPT MILITARY DRIVE",
+    "Apply Vault Code": "Apply Vault Code",
+    "Select Vault Code": "Select Vault Code",
+    "No compatible codes in vault": "No compatible codes in vault",
+    "No Encrypted Drive in Stash or Pouch": "No Encrypted Drive in Stash or Pouch",
+    "Encrypted Military Drive": "Encrypted Military Drive"
   },
   "de": {
     "Equip": "Anlegen",
@@ -25,7 +33,15 @@
     "Buy Ammo": "Munition kaufen",
     "Buy from Trader": "Beim Händler kaufen",
     "EQUIP ITEM": "GEGENSTAND AUSRÜSTEN",
-    "No compatible items in stash": "Keine passenden Gegenstände im Lager"
+    "No compatible items in stash": "Keine passenden Gegenstände im Lager",
+    "INSANITY HARVESTED": "WAHNSINN GEERNTET",
+    "SELL ALL BTC": "ALLE BTC VERKAUFEN",
+    "DECRYPT MILITARY DRIVE": "MILITÄRLAUFWERK ENTSCHLÜSSELN",
+    "Apply Vault Code": "Tresor-Code anwenden",
+    "Select Vault Code": "Tresor-Code auswählen",
+    "No compatible codes in vault": "Keine kompatiblen Codes im Tresor",
+    "No Encrypted Drive in Stash or Pouch": "Kein verschlüsseltes Laufwerk im Lager oder Beutel",
+    "Encrypted Military Drive": "Verschlüsseltes Militärlaufwerk"
   },
   "es": {
     "Equip": "Equipar",
@@ -39,7 +55,15 @@
     "Buy Ammo": "Comprar Munición",
     "Buy from Trader": "Comprar al Comerciante",
     "EQUIP ITEM": "EQUIPAR OBJETO",
-    "No compatible items in stash": "No hay objetos compatibles en el alijo"
+    "No compatible items in stash": "No hay objetos compatibles en el alijo",
+    "INSANITY HARVESTED": "LOCURA COSECHADA",
+    "SELL ALL BTC": "VENDER TODO EL BTC",
+    "DECRYPT MILITARY DRIVE": "DESCIFRAR UNIDAD MILITAR",
+    "Apply Vault Code": "Aplicar código de bóveda",
+    "Select Vault Code": "Seleccionar código de bóveda",
+    "No compatible codes in vault": "No hay códigos compatibles en la bóveda",
+    "No Encrypted Drive in Stash or Pouch": "No hay unidad encriptada en el alijo o bolsillo",
+    "Encrypted Military Drive": "Unidad militar encriptada"
   },
   "fr": {
     "Equip": "Équiper",
@@ -53,7 +77,15 @@
     "Buy Ammo": "Acheter des Munitions",
     "Buy from Trader": "Acheter au Marchand",
     "EQUIP ITEM": "ÉQUIPER OBJET",
-    "No compatible items in stash": "Aucun objet compatible dans la planque"
+    "No compatible items in stash": "Aucun objet compatible dans la planque",
+    "INSANITY HARVESTED": "DÉMENCE RÉCOLTÉE",
+    "SELL ALL BTC": "VENDRE TOUS LES BTC",
+    "DECRYPT MILITARY DRIVE": "DÉCHIFFRER LE LECTEUR MILITAIRE",
+    "Apply Vault Code": "Appliquer le code du coffre",
+    "Select Vault Code": "Sélectionner le code du coffre",
+    "No compatible codes in vault": "Aucun code compatible dans le coffre",
+    "No Encrypted Drive in Stash or Pouch": "Aucun lecteur chiffré dans la planque ou la pochette",
+    "Encrypted Military Drive": "Lecteur militaire chiffré"
   },
   "ja": {
     "Equip": "装備",
@@ -67,7 +99,15 @@
     "Buy Ammo": "弾薬を購入",
     "Buy from Trader": "トレーダーから購入",
     "EQUIP ITEM": "アイテムを装備",
-    "No compatible items in stash": "スタッシュに適合するアイテムがありません"
+    "No compatible items in stash": "スタッシュに適合するアイテムがありません",
+    "INSANITY HARVESTED": "狂気の収穫",
+    "SELL ALL BTC": "すべてのBTCを売却",
+    "DECRYPT MILITARY DRIVE": "軍用ドライブを復号",
+    "Apply Vault Code": "保管庫コードを適用",
+    "Select Vault Code": "保管庫コードを選択",
+    "No compatible codes in vault": "保管庫に適合するコードがありません",
+    "No Encrypted Drive in Stash or Pouch": "スタッシュまたはポーチに暗号化ドライブがありません",
+    "Encrypted Military Drive": "暗号化された軍用ドライブ"
   },
   "ko": {
     "Equip": "장착",
@@ -81,7 +121,15 @@
     "Buy Ammo": "탄약 구매",
     "Buy from Trader": "상인에게서 구매",
     "EQUIP ITEM": "아이템 장착",
-    "No compatible items in stash": "창고에 호환되는 아이템이 없습니다"
+    "No compatible items in stash": "창고에 호환되는 아이템이 없습니다",
+    "INSANITY HARVESTED": "수확된 광기",
+    "SELL ALL BTC": "모든 BTC 판매",
+    "DECRYPT MILITARY DRIVE": "군용 드라이브 복호화",
+    "Apply Vault Code": "보관소 코드 적용",
+    "Select Vault Code": "보관소 코드 선택",
+    "No compatible codes in vault": "보관소에 호환되는 코드가 없습니다",
+    "No Encrypted Drive in Stash or Pouch": "창고 또는 파우치에 암호화된 드라이브가 없습니다",
+    "Encrypted Military Drive": "암호화된 군용 드라이브"
   },
   "pl": {
     "Equip": "Załóż",
@@ -95,7 +143,15 @@
     "Buy Ammo": "Kup amunicję",
     "Buy from Trader": "Kup u handlarza",
     "EQUIP ITEM": "WYPOSAŻ PRZEDMIOT",
-    "No compatible items in stash": "Brak pasujących przedmiotów w schowku"
+    "No compatible items in stash": "Brak pasujących przedmiotów w schowku",
+    "INSANITY HARVESTED": "ZEBRANY OBŁĘD",
+    "SELL ALL BTC": "SPRZEDAJ WSZYSTKIE BTC",
+    "DECRYPT MILITARY DRIVE": "ODSZYFRUJ DYSK WOJSKOWY",
+    "Apply Vault Code": "Zastosuj kod ze skarbca",
+    "Select Vault Code": "Wybierz kod ze skarbca",
+    "No compatible codes in vault": "Brak pasujących kodów w skarbcu",
+    "No Encrypted Drive in Stash or Pouch": "Brak zaszyfrowanego dysku w schowku lub ładownicy",
+    "Encrypted Military Drive": "Zaszyfrowany dysk wojskowy"
   },
   "pt": {
     "Equip": "Equipar",
@@ -109,7 +165,15 @@
     "Buy Ammo": "Comprar Munição",
     "Buy from Trader": "Comprar do Comerciante",
     "EQUIP ITEM": "EQUIPAR ITEM",
-    "No compatible items in stash": "Nenhum item compatível no estoque"
+    "No compatible items in stash": "Nenhum item compatível no estoque",
+    "INSANITY HARVESTED": "INSANIDADE COLETADA",
+    "SELL ALL BTC": "VENDER TODO O BTC",
+    "DECRYPT MILITARY DRIVE": "DECRIPTAR DRIVE MILITAR",
+    "Apply Vault Code": "Aplicar Código do Cofre",
+    "Select Vault Code": "Selecionar Código do Cofre",
+    "No compatible codes in vault": "Nenhum código compatível no cofre",
+    "No Encrypted Drive in Stash or Pouch": "Nenhum drive criptografado no estoque ou estojo",
+    "Encrypted Military Drive": "Drive Militar Criptografado"
   },
   "ru": {
     "Equip": "Экипировать",
@@ -123,7 +187,15 @@
     "Buy Ammo": "Купить боеприпасы",
     "Buy from Trader": "Купить у торговца",
     "EQUIP ITEM": "ЭКИПИРОВАТЬ ПРЕДМЕТ",
-    "No compatible items in stash": "В хранилище нет подходящих предметов"
+    "No compatible items in stash": "В хранилище нет подходящих предметов",
+    "INSANITY HARVESTED": "СОБРАНО БЕЗУМИЯ",
+    "SELL ALL BTC": "ПРОДАТЬ ВЕСЬ BTC",
+    "DECRYPT MILITARY DRIVE": "РАСШИФРОВАТЬ НАКОПИТЕЛЬ",
+    "Apply Vault Code": "Применить код хранилища",
+    "Select Vault Code": "Выберите код хранилища",
+    "No compatible codes in vault": "В хранилище нет подходящих кодов",
+    "No Encrypted Drive in Stash or Pouch": "В хранилище или подсумке нет зашифрованного накопителя",
+    "Encrypted Military Drive": "Зашифрованный военный накопитель"
   },
   "tr": {
     "Equip": "Kuşan",
@@ -137,7 +209,15 @@
     "Buy Ammo": "Mühimmat Satın Al",
     "Buy from Trader": "Tüccardan Satın Al",
     "EQUIP ITEM": "EŞYA KUŞAN",
-    "No compatible items in stash": "Zulada uyumlu eşya yok"
+    "No compatible items in stash": "Zulada uyumlu eşya yok",
+    "INSANITY HARVESTED": "TOPLANAN CİNNET",
+    "SELL ALL BTC": "TÜM BTC'LERİ SAT",
+    "DECRYPT MILITARY DRIVE": "ASKERİ SÜRÜCÜYÜ ÇÖZ",
+    "Apply Vault Code": "Kasa Kodunu Uygula",
+    "Select Vault Code": "Kasa Kodu Seç",
+    "No compatible codes in vault": "Kasada uyumlu kod yok",
+    "No Encrypted Drive in Stash or Pouch": "Zulada veya çantada şifreli sürücü yok",
+    "Encrypted Military Drive": "Şifreli Askeri Sürücü"
   },
   "zh": {
     "Equip": "装备",
@@ -151,7 +231,15 @@
     "Buy Ammo": "购买弹药",
     "Buy from Trader": "向商人购买",
     "EQUIP ITEM": "装备物品",
-    "No compatible items in stash": "仓库中没有兼容的物品"
+    "No compatible items in stash": "仓库中没有兼容的物品",
+    "INSANITY HARVESTED": "收获的疯狂",
+    "SELL ALL BTC": "出售全部BTC",
+    "DECRYPT MILITARY DRIVE": "解密军用硬盘",
+    "Apply Vault Code": "应用保险库代码",
+    "Select Vault Code": "选择保险库代码",
+    "No compatible codes in vault": "保险库中没有兼容的代码",
+    "No Encrypted Drive in Stash or Pouch": "仓库或安全箱中没有加密硬盘",
+    "Encrypted Military Drive": "加密军用硬盘"
   },
   "zhtw": {
     "Equip": "裝備",
@@ -165,6 +253,14 @@
     "Buy Ammo": "購買彈藥",
     "Buy from Trader": "向商人購買",
     "EQUIP ITEM": "裝備物品",
-    "No compatible items in stash": "倉庫中沒有相容的物品"
+    "No compatible items in stash": "倉庫中沒有相容的物品",
+    "INSANITY HARVESTED": "收穫的瘋狂",
+    "SELL ALL BTC": "出售全部BTC",
+    "DECRYPT MILITARY DRIVE": "解密軍用硬碟",
+    "Apply Vault Code": "套用保險庫代碼",
+    "Select Vault Code": "選擇保險庫代碼",
+    "No compatible codes in vault": "保險庫中沒有相容的代碼",
+    "No Encrypted Drive in Stash or Pouch": "倉庫或安全箱中沒有加密硬碟",
+    "Encrypted Military Drive": "加密軍用硬碟"
   }
 }

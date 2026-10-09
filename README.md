@@ -1,19 +1,24 @@
 # UnhumanCommonSensePatch
 
-A comprehensive Quality-of-Life (QoL), rebalance, and convenience mod bundle for **UNHUMAN**.
+A comprehensive Quality-of-Life (QoL), economy rebalance, and raid-synergy mod bundle for **UNHUMAN**.
 
-The patcher modifies the game package directly (`package.nw\unhuman.html` and `package.nw\lang\*.js`), adding essential inventory management shortcuts, weapon & ammunition conveniences, loadout automation, endgame progression safeguards, and full multi-language localization across 12 languages.
+The patcher modifies the game package directly (`package.nw\unhuman.html` and `package.nw\lang\*.js`), adding essential inventory management shortcuts, weapon & ammunition conveniences, loadout automation, endgame progression safeguards, raid-anchored hideout progression, and full multi-language localization across 12 languages.
 
 ---
 
 ## Table of Contents
 1. [Features Overview](#features-overview)
+   - [Core Inventory & Convenience (Features 1–10)](#core-inventory--convenience)
+   - [Endgame Abyss & Gear Safeguards (Features 11–12)](#endgame-abyss--gear-safeguards)
+   - [Raid-Synergy & Hideout Economy Overhaul (Features 13–19)](#raid-synergy--hideout-economy-overhaul)
 2. [Configuration Guide (How to Change Values)](#configuration-guide-how-to-change-values)
-   - [Endgame Abyss & Crafting Rebalance](#1-endgame-abyss--crafting-rebalance)
-   - [Insanity Background Generation Tuning](#2-insanity-background-generation-tuning)
-   - [Tutorial Skip Starting Rewards](#3-tutorial-skip-starting-rewards)
-   - [Visual Themes, Highlights & Colors](#4-visual-themes-highlights--colors)
-   - [Editing Translations & Text](#5-editing-translations--text)
+   - [1. Raid Extraction Insanity Formula](#1-raid-extraction-insanity-formula)
+   - [2. Mining Rig Economy & Decryption Tuning](#2-mining-rig-economy--decryption-tuning)
+   - [3. Military Drive Loot Drop Chances](#3-military-drive-loot-drop-chances)
+   - [4. Endgame Abyss & Mythic Upgrade Rates](#4-endgame-abyss--mythic-upgrade-rates)
+   - [5. Tutorial Skip Starting Rewards](#5-tutorial-skip-starting-rewards)
+   - [6. Visual Themes, Highlights & Colors](#6-visual-themes-highlights--colors)
+   - [7. Editing Translations & Text](#7-editing-translations--text)
 3. [How to Enable & Disable Specific Features](#how-to-enable--disable-specific-features)
    - [In-Game Toggles](#in-game-toggles)
    - [Patch-Level Toggles (Code)](#patch-level-toggles-code)
@@ -30,32 +35,34 @@ The patcher modifies the game package directly (`package.nw\unhuman.html` and `p
 
 ## Features Overview
 
-### 1. Tutorial Skip Toggle + Instant Rewards
+### Core Inventory & Convenience
+
+#### 1. Tutorial Skip Toggle + Instant Rewards
 * Adds a **Skip Tutorial** toggle directly in the Character Creation screen.
 * Bypasses the tutorial sequence and mentor tasks without missing out on progression.
 * Automatically grants starting rewards: **$225,000 cash**, **Level 5**, **4 Skill Points**, a random tier-3 starter weapon (AR, SMG, Shotgun, or DMR), and starter tech chips (10x Root, 10x Flash, 10x Kernel).
 
-### 2. Start Screen / Intro Splash Skip
+#### 2. Start Screen / Intro Splash Skip
 * Adds a toggle in Game Settings (`Settings > Display > Skip Intro Splash`, enabled by default).
 * Allows instant skipping of the splash screen by clicking anywhere or pressing any key on boot.
 
-### 3. Minigame Auto-Complete Penalty Removal
+#### 3. Minigame Auto-Complete Penalty Removal
 * Automatically adjusts auto-complete minigame penalties (removes the `-15%` loot penalty in Raid Filters on game versions where applicable).
 
-### 4. Double-Click to Equip / Unequip Items
+#### 4. Double-Click to Equip / Unequip Items
 * **From Stash / Containers**: Double-click weapons, armor, accessories, or containers to equip them into available slots or automatically pack them into rigs/backpacks/pockets.
 * **From Loadout**: Double-click equipped weapons, armor, or rigs to instantly unequip them to stash.
 * **From Augments**: Double-click augments to equip or unequip to/from the augment locker.
 
-### 5. Right-Click Context Menu Equip / Unequip
+#### 5. Right-Click Context Menu Equip / Unequip
 * Adds contextual **"Equip"** option when right-clicking stash and container items.
 * Adds contextual **"Unequip"** option when right-clicking equipped gear or augment items.
 
-### 6. Right-Click Weapon "Buy Ammo" Shortcut
+#### 6. Right-Click Weapon "Buy Ammo" Shortcut
 * Right-clicking an equipped weapon in your loadout displays a **"Buy Ammo"** option in the context menu.
 * Clicking it automatically opens the **Gunsmith** trader shop tab, auto-selects the compatible clip/magazine in the fixed stock list, smoothly scrolls to it, and pulses it with a glowing green neon indicator for immediate purchase.
 
-### 7. Weapon Hover Compatible Magazine Highlighting
+#### 7. Weapon Hover Compatible Magazine Highlighting
 * Hovering over any weapon in your stash or loadout dynamically scans and highlights all compatible clips and magazines across your entire inventory:
   * Stash grid
   * Equipped Chest Rig container
@@ -65,7 +72,7 @@ The patcher modifies the game package directly (`package.nw\unhuman.html` and `p
 * Highlighted magazines pulse with a cyber green neon glow (`.uh-mag-highlight`) to make ammunition management effortless.
 * Highlights automatically clear when the mouse leaves or when the tooltip closes.
 
-### 8. Empty Loadout Slot Quick-Equip Modal & Trader Direct-Buy
+#### 8. Empty Loadout Slot Quick-Equip Modal & Trader Direct-Buy
 * Clicking any empty equipment slot in your loadout (`primary`, `secondary`, `melee`, `head`, `body`, `rig`, `backpack`, `pouch`, `earpiece`, `facecover`, `eyewear`, etc.) or empty augment slot opens an interactive cyber-styled **Quick-Equip Modal**:
   * Displays all compatible items for that slot currently stored in your stash.
   * Lists essential item stats (Damage, RPM, Durability, Armor rating, Container grid size, Rarity tier coloring).
@@ -76,24 +83,26 @@ The patcher modifies the game package directly (`package.nw\unhuman.html` and `p
     * Cybernetic Augments -> **Ripperdoc**
     * Relics -> **Signal Broker**
 
-### 9. Insanity Background Generation & Visual Layer Step Indicator
-* **Seamless Multitasking**: Auto-clickers unlocked in the Insanity minigame continue running in the background when navigating away to other tabs (Operations/Raids, Stash, Loadout, Tech Table, Traders, Quests, Skills).
-* **100% Silent & Zero Performance Drop**: Suppresses all combat hit sounds, golden enemy spawn sweeps, screen shake, visual glitch flashes, and death overlays while running in the background. Does not touch hidden DOM elements, ensuring zero FPS impact during raids.
-* **Auto-Reset to Layer 1 on Death**: If auto Insanity is defeated by a difficult layer or boss, it automatically resets to **Layer 1** rather than locking into an unwinnable checkpoint death loop. This enables continuous autonomous farming of Insanity currency from earlier layers, while preserving the highest cycle record (`runBest`).
-* **Visual Progress Indicator**: Fills the "INSANITY" navigation menu button across the top bar, Hub Terminal (`[ INSANITY ]`), and NavDock from left to right with a clean slate grey fill (`--uh-ins-fill`) indicating the current 10-layer step and enemy HP progression.
+#### 9. Full Multi-Language Localization (12 Languages)
+All mod-added elements (toggles, notifications, menu options, modal dialogs, and button labels) are fully localized across all 12 game languages:
+English (`en`), German (`de`), Spanish (`es`), French (`fr`), Japanese (`ja`), Korean (`ko`), Polish (`pl`), Portuguese (`pt`), Russian (`ru`), Turkish (`tr`), Simplified Chinese (`zh`), and Traditional Chinese (`zhtw`).
 
-### 10. SKILLS Asterisk Indicator on Unspent Points
+#### 10. SKILLS Asterisk Indicator on Unspent Points
 * Dynamically attaches an asterisk `*` to any button that leads to SKILLS and reads as SKILLS (`SKILLS *`, `[ SKILLS * ]`) whenever the player has unspent skill points to allocate (`availablePoints > 0`).
 * Seamlessly clears the asterisk once all points are spent.
 * Works across all navigation views (Top Bar, Hub Terminal, NavDock) and is fully compatible with all 12 supported languages.
 
-### 11. Mythic Weapon Upgrades (+1 to +10 Checkpoint & Zero Deletion)
+---
+
+### Endgame Abyss & Gear Safeguards
+
+#### 11. Mythic Weapon Upgrades (+1 to +10 Checkpoint & Zero Deletion)
 * **Zero Weapon Deletion**: Permanently disables weapon destruction on failed upgrades across all levels (previously, upgrading past +5 had a catastrophic chance to permanently delete your weapon base).
 * **Safety Checkpoint Floor at +5**: Failing an upgrade at +5 or higher only downgrades the weapon by 1 level, but will **never drop below +5**. Once you reach the +5 milestone, your weapon is permanently protected at +5 minimum.
 * **Fairer Endgame Success Progression**: Smoothed success rates for higher tiers (+1 to +3: 100%, +4: 85%, +5: 70%, +6: 55%, +7: 45%, +8: 35%, +9: 25%, +10: 20%). Makes reaching +10 and unlocking the 3rd ability slot achievable with dedication rather than ~1/1,200 astronomical odds.
 * **Dynamic UI Updates**: Modal dialogs automatically adjust to show "CONFIRM UPGRADE" with regular theme instead of danger alerts, and warning text updates to reflect level downgrade rather than deletion risk.
 
-### 12. Nullpoint Abyss Fragment Merging (Safe Failure & Fee/Rate Rebalance)
+#### 12. Nullpoint Abyss Fragment Merging (Safe Failure & Fee/Rate Rebalance)
 * **Base Preservation on Failure**: When attempting to merge two Nullpoint Abyss fragments and failing, only the duplicate material fragment is consumed. Your primary base fragment is **100% preserved**, allowing you to continuously build up rare high-stat bases without losing them.
 * **90% Fee Reduction on Infinity Fragments**: Merging Infinity fragments now costs $1B cash per attempt instead of the prohibitive $10B fee.
 * **Standard Fragment & Module Cost Reductions**:
@@ -105,24 +114,128 @@ The patcher modifies the game package directly (`package.nw\unhuman.html` and `p
   * Infinity Fragments: progression improved from [10, 5, 2, 1, 1]% to **[35, 25, 20, 15, 10]%**.
 * **Context-Aware Notifications**: Modal preview specifies "Secondary copy consumed (Base preserved)" and failure banners accurately report that your base fragment was preserved.
 
-### 13. Full Multi-Language Localization (12 Languages)
-All mod-added elements (toggles, notifications, menu options, modal dialogs, and button labels) are fully localized across all 12 game languages:
-English (`en`), German (`de`), Spanish (`es`), French (`fr`), Japanese (`ja`), Korean (`ko`), Polish (`pl`), Portuguese (`pt`), Russian (`ru`), Turkish (`tr`), Simplified Chinese (`zh`), and Traditional Chinese (`zhtw`).
+---
+
+### Raid-Synergy & Hideout Economy Overhaul
+
+#### 13. In-Raid Insanity Harvest & Extraction Summary
+* **Raid-Driven Currency**: Replaces disjointed idle grinding by awarding Insanity directly upon **successful raid extraction**.
+* **Reward Formula**:
+  $$\text{Insanity} = \left( 150 \times \text{MapTier} \times (1 + 0.1 \times \text{CorruptionLevel}) + 15 \times \text{Kills} + \text{BossBonus (600)} + \text{FullClearBonus (250)} \right) \times (1 + 0.15 \times \text{Prestige})$$
+* **High Extraction Stakes**: If killed in action (KIA), you earn **strictly 0 Insanity**. You must extract alive to secure your harvested corruption.
+* **Extraction Summary Screen**: Harvested Insanity is displayed prominently on the post-raid summary modal (`+X INSANITY HARVESTED` in purple neon `#c084fc`), eliminating toast banner notification spam.
+
+#### 14. Streamlined Signal Research Station (Insanity Tab)
+* **Research Focus**: Permanently hides the tedious ASCII auto-clicker combat arena (`#igArena`) with clean CSS layout expansion (`max-width: 960px`).
+* **Clean Research Console**: The Insanity Tab now serves purely as a research station to view and manage Signal Masteries, open corruption caches, and check your Insanity currency balance.
+* **Zero Automation Noise**: Neutralizes background combat loop timers (`enemyTick`, `_startAutos`) and filters out obsolete auto-clicker upgrade cards from the Insanity shop.
+
+#### 15. Exclusive Raid Weapons (Insanity Cache Rebalance)
+* **Preserving Raid Value**: Strips raw Prototype and Mythic weapons from Insanity caches so the most coveted end-game gear is earned exclusively from raid extraction and boss encounters.
+* **High-Tier Crafting & Currency**:
+  * **Proto Cache**: Drops high-value Tech Flash Drives (`tech_drive_flash`), Expansion Parts (`tech_part_expansion`), and Insanity currency.
+  * **Mythic Cache**: Drops guaranteed Kernel Chips (`tech_chip_kernel`), **$1,500,000 credit bundles**, and **5,000 Abyss Flux**.
+
+#### 16. Mining Rig Economy Overhaul (15× Yield & 75% Fuel Cut)
+* **Meaningful Hideout Income**: Mining Rig Bitcoin generation rate is boosted **15×** (from `0.0001` to `0.0015` BTC per minute per active GPU).
+* **Extended Operation**: Fuel consumption rate is reduced by **75%** (from `1.0` to `0.25` fuel per minute). A full 100-fuel tank now lasts **6.6 hours** of continuous mining rather than draining in 100 minutes.
+* **Subsidizes Raids**: Mining revenue now reliably funds your raid ammunition, weapon maintenance, gear repair, and insurance fees.
+
+#### 17. One-Click Bitcoin Cashout Button
+* Adds an interactive `[ 💰 SELL ALL BTC (+$X) ]` button in the Mining Rig header.
+* Instantly liquidates all accumulated Bitcoin into in-game credits at current market rates without navigating through multiple trader submenus.
+* Live status header dynamically updates your estimated USD payout as Bitcoin is mined.
+
+#### 18. Decryption Station & Military Drives
+* **New Barter Item**: Adds **Encrypted Military Drive** (`encrypted_drive`, $50,000 value, 1x1 grid size, intel category, fits in secure pouches).
+* **Raid Drops**: Found in raid POI loot containers (15% chance) and guaranteed on raid bosses and wardens (100% drop).
+* **Decryption Station**: Adds an interactive `[ ⚡ DECRYPT MILITARY DRIVE ]` button to the Mining Rig header. Instantly cracks encrypted drives in your stash or pouch into guaranteed crafting codes.
+* **GPU Hash Rate Scaling**: The rarity of extracted codes scales dynamically with your active GPU farm:
+  * **1–4 GPUs**: 45% Kernel code, 40% Patch code, 10% Anchor code, 5% Glitch code.
+  * **5+ GPUs**: 45% Kernel code, 25% Glitch code, 20% Patch code, 10% Anchor code.
+
+#### 19. Stash-Level Vault Code Injection
+* Right-clicking any weapon or armor in your stash or loadout adds a new **"Apply Vault Code"** context menu option.
+* Opens an interactive **Vault Code Selection Modal** displaying all compatible Kernel, Patch, and Glitch codes currently stored in your Tech Craft Code Vault.
+* Selecting a code installs the desired affix directly onto your gear using existing terminal crafting logic, auto-recalculates item stats via `ItemFactory`, and consumes the code from your vault. Eliminates the need to manually memorize or type 12-character strings into terminal command lines.
 
 ---
 
 ## Configuration Guide (How to Change Values)
 
-All configurable gameplay numbers and behaviors are defined in the patch files:
-* **`patcher.js`** (used when running via Node.js or `patcher.bat` on systems with Node)
-* **`patcher.ps1`** (used when running via native PowerShell)
+All gameplay values are cleanly centralized in the patch files:
+* **`patcher.js`** (Node.js engine)
+* **`patcher.ps1`** (Native PowerShell engine)
 
 > [!TIP]
 > If you edit values in `patcher.js`, make sure to mirror the change in `patcher.ps1` (or vice versa) so your customization persists regardless of which engine runs!
 
-### 1. Endgame Abyss & Crafting Rebalance
+### 1. Raid Extraction Insanity Formula
 
-Located under the patch named **`"Merge Config & Upgrade Rates"`** (search for `MERGE_CONFIG` in `patcher.js` and `patcher.ps1`):
+Located in patch **`"Raid Extraction: In-Raid Insanity Harvest & Summary Display"`**:
+
+```javascript
+const mT = MAP_DEFS[this.currentMapId]?.tier || 1;
+const cL = getCurrentCL(this.currentMapId) || 0;
+const bIns = 150 * mT * (1 + 0.1 * Math.max(0, cL)); // Base map tier & corruption bonus
+const kIns = 15 * (this.stats?.enemiesKilled || 0);  // Kills bonus (15 Insanity per kill)
+const hB = bossKilled ? 600 : 0;                     // Boss defeat bonus (600 Insanity)
+const fC = fullMapCleared ? 250 : 0;                 // Full map clear bonus (250 Insanity)
+const pM = 1 + 0.15 * (Game.data?.prestige || 0);    // Prestige multiplier (+15% per prestige level)
+```
+
+To modify these rewards:
+* **Increase kill value**: Change `15` in `kIns = 15 * ...` (e.g. `25` for 25 per kill).
+* **Adjust boss bonus**: Change `600` in `hB = ... ? 600 : 0` to your desired amount.
+* **Adjust base rate**: Change `150` in `bIns = 150 * ...`.
+
+---
+
+### 2. Mining Rig Economy & Decryption Tuning
+
+#### Bitcoin Generation Rate & Fuel Consumption
+Located in patches **`"Mining Rig: 15x BTC Production Rate"`** and **`"Mining Rig: 75% Fuel Drain Reduction"`**:
+
+```javascript
+// BTC per GPU per minute (default mod: 1.5e-3 = 0.0015 BTC/min; vanilla: 1e-4 = 0.0001 BTC/min)
+BTC_PER_GPU_PER_MINUTE: 1.5e-3
+
+// Fuel drain per minute multiplier (default mod: 0.25x = 0.25 fuel/min; vanilla: 1.0 fuel/min)
+const o = (a.fuelDrainPerMinute || 1) * 0.25 * i;
+```
+
+#### Decryption Station Code Probabilities
+Located inside `MiningRig.decryptDrive` in patch **`"Double-Click & Quick Stash & Hover & Empty Slot & Vault Modal Handler"`**:
+
+```javascript
+// Total GPUs >= 5:
+s = r < 0.25 ? "glitch" : r < 0.70 ? "kernel" : r < 0.90 ? "patch" : "anchor";
+
+// Total GPUs 1 - 4:
+s = r < 0.05 ? "glitch" : r < 0.45 ? "kernel" : r < 0.85 ? "patch" : "anchor";
+```
+
+You can adjust these threshold percentiles to change the probability of cracking Glitch, Kernel, Patch, or Anchor codes.
+
+---
+
+### 3. Military Drive Loot Drop Chances
+
+* **POI Loot Containers (15% default)**: Located in patch **`"Raid POI Drop: Encrypted Military Drive (15% chance)"`**:
+  ```javascript
+  if (Math.random() < 0.15) { ... }
+  ```
+  Change `0.15` to `0.25` for 25% or `0.50` for 50%.
+* **Boss Drops (100% default)**: Located in patch **`"Raid Boss Drop: Encrypted Military Drive (100% chance)"`**:
+  ```javascript
+  if (e.isBoss || e.isWarden) { ... }
+  ```
+
+---
+
+### 4. Endgame Abyss & Mythic Upgrade Rates
+
+Located under patch **`"Merge Config & Upgrade Rates"`**:
 
 ```javascript
 MERGE_CONFIG = {
@@ -153,31 +266,11 @@ Located under patch **`"Mythic Weapon Upgrades Safety Floor at +5"`**:
 r.upgradeLevel = (r.upgradeLevel >= 5) ? Math.max(5, r.upgradeLevel - 1) : Math.max(0, (r.upgradeLevel || 1) - 1);
 ```
 * To change the checkpoint to **+7**: replace both `5`s with `7`.
-* To allow dropping below +5 (vanilla downgrade behavior without deletion): change to `r.upgradeLevel = Math.max(0, (r.upgradeLevel || 1) - 1)`.
-
-#### Preserving Fragments on Failure
-Located under patch **`"Fragment Merging Safe Failure"`**:
-```javascript
-// On failure: consumes duplicate e.srcs[1], preserves base e.srcs[0]
-s ? this._mutateFragMerge(e.srcs[0], e.srcs[1]) : e.srcs[1].remove();
-```
+* To allow dropping below +5 (downgrade without deletion): change to `r.upgradeLevel = Math.max(0, (r.upgradeLevel || 1) - 1)`.
 
 ---
 
-### 2. Insanity Background Generation Tuning
-
-Located inside the large script block in patch **`"Double-Click & Quick Stash & Hover & Empty Slot Handler"`**:
-
-| Setting | Variable / Code Location | Default Value | Description |
-| :--- | :--- | :--- | :--- |
-| **Tick Rate** | `setInterval(..., 250)` (at bottom of script) | `250` ms (4 Hz) | Frequency of background damage processing. |
-| **Respawn Delay** | `setTimeout(..., 1400)` inside `die()` | `1400` ms | Delay before respawning after dying in the background. |
-| **Reset Layer on Death** | `if (e) e.level = 1;` | `1` | Layer to reset to on defeat. Set to `e.level = e.checkpoint;` if you prefer resetting to the nearest checkpoint instead of Layer 1. |
-| **Enemy Attack Rate** | `atkMs = IG_CONST.ATTACK_MS ? ... : 1000` | `1000` ms (1s) | Interval between enemy attacks in the background. |
-
----
-
-### 3. Tutorial Skip Starting Rewards
+### 5. Tutorial Skip Starting Rewards
 
 Located under patch **`"1b. finalizeCharacter Hook & skipTutorialAndGrantRewards"`**:
 
@@ -189,18 +282,16 @@ Located under patch **`"1b. finalizeCharacter Hook & skipTutorialAndGrantRewards
   this.addCurrency("tech_drive_flash", 10);
   this.addCurrency("tech_chip_kernel", 10);
   ```
-  Adjust `10` to any quantity you want.
 * **Starter Weapons**:
   ```javascript
   const e = ["ar_t3", "smg_t3", "shotgun_t3", "dmr_t3"];
   ```
-  You can add or remove weapon base IDs from this array.
 
 ---
 
-### 4. Visual Themes, Highlights & Colors
+### 6. Visual Themes, Highlights & Colors
 
-Located inside the embedded CSS block (`<style id="uh-mod-styles">`) in patch **`"Double-Click & Quick Stash & Hover & Empty Slot Handler"`**:
+Located inside the embedded CSS block (`<style id="uh-mod-styles">`) in patch **`"Double-Click & Quick Stash & Hover & Empty Slot & Vault Modal Handler"`**:
 
 * **Magazine Pulse Highlight**:
   ```css
@@ -209,19 +300,18 @@ Located inside the embedded CSS block (`<style id="uh-mod-styles">`) in patch **
       box-shadow: 0 0 12px rgba(0,255,65,0.9) !important; /* Glow color */
   }
   ```
-* **Insanity Progress Bar Fill Color**:
+* **Insanity Tab Transformation**:
   ```css
-  .uh-ins-running {
-      background: linear-gradient(to right, rgba(160,175,190,0.35) 0%, ...);
-  }
+  #igArena { display: none !important; }
+  .ig-root { justify-content: center !important; }
+  .ig-side { width: 100% !important; max-width: 960px !important; margin: 0 auto !important; }
   ```
-  Replace `rgba(160,175,190,0.35)` with any RGBA or Hex color (e.g. `rgba(0,255,65,0.25)` for a matrix green fill).
-* **Quick-Equip Modal Backdrop & Box**:
+* **Quick-Equip & Vault Modals**:
   Adjust `.uh-modal-backdrop` and `.uh-modal-box` styling (borders, shadow, blur) to match your custom theme.
 
 ---
 
-### 5. Editing Translations & Text
+### 7. Editing Translations & Text
 
 All user-facing text strings are centralized in **[`translations.json`](translations.json)**.
 
@@ -236,7 +326,15 @@ To customize any button label, notification, or modal text:
        "EQUIP ITEM": "EQUIP ITEM",
        "No compatible items in stash": "No compatible items in stash",
        "Secondary copy consumed (Base preserved)": "Secondary copy consumed (Base preserved)",
-       "Secondary copy consumed. Base preserved!": "Secondary copy consumed. Base preserved!"
+       "Secondary copy consumed. Base preserved!": "Secondary copy consumed. Base preserved!",
+       "INSANITY HARVESTED": "INSANITY HARVESTED",
+       "SELL ALL BTC": "SELL ALL BTC",
+       "DECRYPT MILITARY DRIVE": "DECRYPT MILITARY DRIVE",
+       "Apply Vault Code": "Apply Vault Code",
+       "Select Vault Code": "Select Vault Code",
+       "No compatible codes in vault": "No compatible codes in vault",
+       "No Encrypted Drive in Stash or Pouch": "No Encrypted Drive in Stash or Pouch",
+       "Encrypted Military Drive": "Encrypted Military Drive"
    }
    ```
 4. Re-run `patcher.bat` -> Select **`[1] Apply Mod Patch`**.
@@ -272,15 +370,15 @@ function getPatches(minifiedI18nJson) {
 ```
 
 #### Disabling a Patch in `patcher.ps1`
-Comment out the block using `<# ... #>` inside the `$patches = @(...)` array:
+Comment out the block using `<# ... #>` inside the `$Patches = @(...)` array:
 ```powershell
 <#
-@{
-    Name = "Fragment Merging Safe Failure"
-    Search = "..."
-    Replace = "..."
-    ExpectedCount = 1
-},
+        @{
+            Name = 'Fragment Merging Safe Failure'
+            Target = '...'
+            Replacement = '...'
+            ExpectedCount = 1
+        },
 #>
 ```
 
@@ -298,12 +396,24 @@ Use this table to quickly find the exact patch name to edit or disable for each 
 | **Tutorial Skip** | `1a. HTML Toggle in Character Creation Screen`<br>`1b. finalizeCharacter Hook & skipTutorialAndGrantRewards`<br>`1c. showPrompt cancelText`<br>`1d. confirmSkip onConfirm` |
 | **Intro Splash Skip** | `2a. GameSettings defaults`<br>`2b. SettingsScreen._renderDisplay`<br>`2c. Splash Screen handler` |
 | **Minigame Penalty Removal** | `3a. Filter Category description`<br>`3b. completeIdleMinigame penalty` |
-| **Right-Click Context Menu** | `Context Menu Equip/Unequip/Buy Ammo HTML`<br>`Context Menu Item Display (Equip/Unequip/Buy Ammo)`<br>`Context Menu Action Handler (Equip/Unequip/Buy Ammo)` |
-| **Quick-Equip / Hover Mags / Background Insanity / Skills Asterisk** | `Double-Click & Quick Stash & Hover & Empty Slot Handler` |
+| **Context Menu Actions** | `Context Menu Equip/Unequip/Buy Ammo/Apply Vault Code HTML`<br>`Context Menu Item Display (Equip/Unequip/Buy Ammo/Apply Vault Code)`<br>`Context Menu Action Handler (Equip/Unequip/Buy Ammo/Apply Vault Code)` |
+| **Quick-Equip / Vault Modal / Decrypt Station** | `Double-Click & Quick Stash & Hover & Empty Slot & Vault Modal Handler` |
 | **Abyss Fees & Success Rates** | `Merge Config & Upgrade Rates` |
 | **Mythic Weapon Safe Outcome (No Deletion)** | `Mythic Weapon Upgrades Safe Outcome` |
 | **Mythic Weapon +5 Safety Floor** | `Mythic Weapon Upgrades Safety Floor at +5` |
 | **Fragment Merging Safe Failure (Base Preserved)** | `Fragment Merging Safe Failure`<br>`Fragment Merging Confirm Modal Label`<br>`Fragment Merging Failure Notification` |
+| **Encrypted Military Drive Item** | `ItemBases: Add Encrypted Military Drive` |
+| **Military Drive Raid POI Drop (15%)** | `Raid POI Drop: Encrypted Military Drive (15% chance)` |
+| **Military Drive Boss Drop (100%)** | `Raid Boss Drop: Encrypted Military Drive (100% chance)` |
+| **Mining Rig 15x BTC Production** | `Mining Rig: 15x BTC Production Rate` |
+| **Mining Rig 75% Fuel Reduction** | `Mining Rig: 75% Fuel Drain Reduction` |
+| **Mining Rig Quick Sell & Decrypt Buttons** | `Mining Rig UI: Quick Sell BTC & Decrypt Station Buttons` |
+| **Mining Rig Header Live Updates** | `Mining Rig UI: Status Bar Live Dynamic Updates` |
+| **Raid Extraction Insanity Harvest** | `Raid Extraction: In-Raid Insanity Harvest & Summary Display` |
+| **Insanity Caches Rebalance (Exclusive Raid Gear)** | `Insanity Caches Rebalance (Exclusive Raid Gear)` |
+| **Cache Rewards Material & Currency Support** | `Insanity Cache Rewards: Material & Currency Support` |
+| **Cache Claim Currency & Flux Support** | `Insanity Cache Claim: Add Currency, Money & Flux` |
+| **Insanity Shop Auto-Clicker Filter** | `Insanity Shop: Filter Out Automation Auto-Clickers` |
 
 ---
 
